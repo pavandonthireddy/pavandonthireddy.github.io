@@ -19,10 +19,9 @@ $\mathrm{abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ23456}$
 
 $\text{abcdeABCDEF ASDFASDF} \alpha, \beta, \gamma$
 
+$$E = mc^2$$
 
-$$ E = mc^2$$
-
-\( \frac{a}{b} \)
+$\text{This is a text for math} \Bigg(\frac{a}{b} \Bigg)$
 
 
 
