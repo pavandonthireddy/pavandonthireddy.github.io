@@ -1,4 +1,4 @@
-title: explorations
+title: Notes
 author:
   name: Pavan Donthireddy
   email: pavan_donthireddy@outlook.com
@@ -6,7 +6,7 @@ author:
 # The `>` after `description:` means to ignore line-breaks until next key.
 # If you want to omit the line-break after the end of text, use `>-` instead.
 description: >
-  My notes and thoughts on various topics
+  My notes and thoughts on a various topics
 
 # Build settings
 
