@@ -7,6 +7,7 @@ author:
 - Nelson Mandela Muntz
 meta: "Springfield"
 usemathjax: true
+tags: [latex,css]
 ---
 
 Description

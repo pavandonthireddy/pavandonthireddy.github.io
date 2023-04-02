@@ -1,0 +1,73 @@
+---
+layout: default
+---
+
+<section class="posts">
+<ul>
+{% for post in paginator.posts %}
+<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time></li>
+{% endfor %}
+</ul>
+
+
+<div class="pagination">
+    <ul>
+      {% if paginator.page != 1 %}
+        <li>
+          <a href="/">&lt;&lt;</a>
+        </li>
+      {% endif %}
+      
+      {% if paginator.previous_page %}
+        <li>
+          {% if paginator.previous_page != 1 %}
+            <a href="/notes/{{ paginator.previous_page }}">&lt;</a>
+          {% else %}
+            <a href="/">&lt;</a>
+          {% endif %}
+        </li>
+      {% endif %}
+      
+      {% assign pagination_start = paginator.page | minus: 2 %}
+      
+      {% if pagination_start == -1 or pagination_start == 0 %}
+        {% assign pagination_start = 1 %}
+      {% endif %}
+      
+      {% assign pagination_end = paginator.page | plus: 2 %}
+        {% if pagination_end > paginator.total_pages %}
+          {% assign pagination_end = paginator.total_pages %}
+        {% endif %}
+      {% if pagination_end < 5 and paginator.total_pages> 5 %}
+        {% assign pagination_end = 5 %}
+      {% endif %}
+      {% for i in (pagination_start .. pagination_end) %}
+        {% if i != 1 %}
+          {% assign page_href = "/notes/" | append: i %}
+        {% else %}
+          {% assign page_href = "/" %}
+        {% endif %}
+        {% if i == paginator.page %}
+          <li class="current-page">
+            <a href="{{ page_href }}">{{ i }}</a>
+          </li>
+        {% else %}
+          <li>
+            <a href="{{ page_href }}">{{ i }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+      {% if paginator.next_page %}
+        <li>
+          <a href="/notes/{{ paginator.next_page }}">&gt;</a>
+        </li>
+      {% endif %}
+      {% if paginator.page != paginator.total_pages %}
+        <li>
+          <a href="/notes/{{ paginator.total_pages }}">&gt;&gt;</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+
+</section>
