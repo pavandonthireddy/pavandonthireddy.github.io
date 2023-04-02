@@ -1,0 +1,13 @@
+links:
+- title: Notes
+  url: /
+- title: Tags
+  url: /tags
+# - title: Graph
+#   url: /graph
+- title: Search
+  url: /search
+- title: About
+  url: /about
+# - title: Rss
+#   url: /atom.xml
