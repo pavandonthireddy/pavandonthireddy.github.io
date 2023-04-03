@@ -4,7 +4,7 @@
  <title>Pavan Donthireddy</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2023-04-03T17:34:06+01:00</updated>
+ <updated>2023-04-03T22:53:07+01:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Pavan Donthireddy</name>
@@ -13,12 +13,66 @@
 
  
  <entry>
-   <title>PCA-ICA-for-fault-detection-1d-timeseries</title>
-   <link href="http://localhost:4000/2017/04/03/pca-ica-for-fault-detection-single-sensor"/>
+   <title>Extreme Point Symmetric Mode Decomposition</title>
+   <link href="http://localhost:4000/2017/04/05/extreme-point-symmetric-mode-decomposition"/>
+   <updated>2017-04-05T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2017/04/05/extreme-point-symmetric-mode-decomposition</id>
+   <content type="html">&lt;p align=&quot;justify&quot;&gt;Considering the extraction methods of trend item, including the difference method, average slope method, moving average method, low pass filtering method, and least square fitting method, the type of trend term often needs to be presupposed. These methods are not suitable for processing the nonstationary signals with complex or random change trends.&lt;/p&gt;
+
+&lt;p align=&quot;justify&quot;&gt;According to previous studies, the wavelet transform-based method is required for preselecting the wavelet basis and decomposition levels. This method is influenced easily by
+artificial factors and has no self-adaptability. &lt;/p&gt;
+
+&lt;p align=&quot;justify&quot;&gt;The method based on Empirical mode decomposition (EMD) can adaptively decompose non-stationary signals regardless of the type of trend term. But, EMD is affected by mode mixing and
+end effect, causing the decomposed trend function is rough and the extraction accuracy is restricted. &lt;/p&gt;
+
+&lt;p align=&quot;justify&quot;&gt;Professor Wang et al. recently proposed a self-adaptive method called ESMD. The ESMD is a novel development derived from Hilbert Huang transform that can be used to process non-stationary signal. ESMD has been applied to many studies.&lt;/p&gt;
+
+&lt;h2 id=&quot;esmd&quot;&gt;ESMD&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Step 1:&lt;/strong&gt; Identify all local extreme points, including maxima and minima points, of the data $Y$. Mark them as $E_{i} (1 ≤ i ≤ n);$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Step 2:&lt;/strong&gt; Connect all adjacent Ei with line segments, and mark their midpoints as $F_{i} (1 ≤ i ≤ n-1);$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Step 3:&lt;/strong&gt; Add left and right boundary midpoints $F_{0}$ and $F_{n}$ using linear interpolation method;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Step 4:&lt;/strong&gt; Construct $p$ interpolating curves $L_{1}, L_{2},\dots L_{p} (p≥1)$ with all $n+1$ midpoints and calculate their mean value by using equation $L^{\ast}$.&lt;/li&gt;
+&lt;/ul&gt;
+
+\[L^{*}= \frac{L_{1}+L_{2}+\dots + L_{p}}{p}\]
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Step 5:&lt;/strong&gt; Repeat steps $1$ to $4$ on $Y - L^{\ast}$ until $||L^{\ast}|| \le \epsilon$ ($\epsilon$ is a permitted error), or until the sifting times attain a preset maximum number $K$. Then, the first mode $M_{1}$ is obtained.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Step 6:&lt;/strong&gt; Repeat steps $1$ to $5$ on the residual $Y - M_1$ and obtain $M_2, M_3 \dots$ until the last residual $R$ with no more than a certain number of extreme points.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Step 7:&lt;/strong&gt; Change the maximum number $K$ on a finite integer interval $[K_{min}, K_{max}],$ and repeat all previous steps. Calculate the variance $\sigma^2$ of $Y - R$ and plot a figure with $\frac{\sigma}{\sigma_{0}}$ and $K$, $\sigma_{0}$ is the standard deviation of $Y$.&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\sigma^2 = \frac{1}{N}\sum_{i=1}^N(y_{i}-r_{i})^2\]
+
+\[\sigma_{0}^2 = \frac{1}{N}\sum_{i=1}^N(y_{i}-\bar{Y})^2\]
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Step 8 :&lt;/strong&gt; Identify the number $K_0$ which corresponds to the minimum  $\frac{\sigma}{\sigma_{0}}$  in $[K_{min}, K_{max}].$  Use this $K_{0}$ to repeat steps $1$ to $6$ and obtain the whole modes. Then last residual $R$ is an optimal Adaptive global mean (AGM) curve.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Based on the steps above, ESMD can decompose signal into limited intrinsic mode functions and a residual component. The residual component $R$ is an optimal AGM curve that can be considered as the trend term of the original signal.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;The extraction error of EMD is larger than that of ESMD. &lt;/u&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The EMD-based extraction method can adaptively extract the signal trend. Whereas, the extracted trend curve limits the number of its extreme points (no more than 1), and no optimal strategy to find it. Therefore, the extraction error of EMD is relatively larger than that of ESMD.&lt;/li&gt;
+  &lt;li&gt;The ESMD-based extraction method has commendable self-adaptability. It can obtain the signal trend with high precision using adaptive decomposition and optimization. The trend type of signal does not need to be preset. And, the extraction results of ESMD are better than that of EMD.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Reference: Adaptive extraction method for trend term of machinery signal based on
+extreme-point symmetric mode decomposition - Yong Zhu, Wan-lu Jiang and Xiang-dong Kong&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PCA ICA for 1D timeseries</title>
+   <link href="http://localhost:4000/2017/04/03/pca-ica-1d-timeseries"/>
    <updated>2017-04-03T00:00:00+01:00</updated>
-   <id>http://localhost:4000/2017/04/03/PCA-ICA-for-fault-detection-single-sensor</id>
+   <id>http://localhost:4000/2017/04/03/PCA-ICA-1d-timeseries</id>
    <content type="html">&lt;h3 id=&quot;idea&quot;&gt;Idea&lt;/h3&gt;
-&lt;p align=&quot;justify&quot;&gt;Principal component analysis (PCA) isa method that transforms multiple data series into uncorrelated data series. Independent component analysis (ICA) is a method that separates multiple data series into independent data series. Both methods have been used in fault detection. However, both require signals from at least two separate sensors. To overcome this requirement and utilize the fault detection capability of ICA and PCA, we propose to use wavelet transform to pre-process the data collected from a single sensor and then use the coefficients of the wavelet transforms at different scales as input to ICA and PCA. &lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;Principal component analysis (PCA) isa method that transforms multiple data series into uncorrelated data series. Independent component analysis (ICA) is a method that separates multiple data series into independent data series. However, both require signals from at least two separate sensors. To overcome this requirement and utilize the fault detection capability of ICA and PCA, we propose to use wavelet transform to pre-process the data collected from a single sensor and then use the coefficients of the wavelet transforms at different scales as input to ICA and PCA. &lt;/p&gt;
 
 &lt;p align=&quot;justify&quot;&gt;Independent components analysis (ICA) requires little prior knowledge about the components to be isolated; however, at least two sensors must be available for signal collection and the number of sensors must be at least equal to the number of sources to be separated and this method cannot be applied directly when there is only one sensor collecting signals.&lt;/p&gt;
 
