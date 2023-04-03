@@ -1,17 +1,17 @@
-site: Sidey
-url: #yoururl
-title: Sidey
-description: Simple and minimalistic jekyll blogging theme.
+site: Pavan Donthireddy's Digital garden
+url: https://pavandonthireddy.github.io
+title: Pavan Donthireddy 
+description: Digital space of notes and thoughts
 twitter:
   username: #yourusername
   card: summary
   creator: #yourusername
 author:
   twitter: #yourusername
-  name: #yourusername
+  name: Pavan Donthireddy
   avatar:
-  email: #youremail
-  url: #yoururl
+  email: quarterpastix@gmail.com
+  url: https://pavandonthireddy.github.io
 permalink: pretty
 
 include: ['_pages']
