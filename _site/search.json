@@ -2,9 +2,20 @@
   
     {
 
-      "title"    : "PCA-ICA-for-fault-detection-1d-timeseries",
+      "title"    : "Extreme Point Symmetric Mode Decomposition",
+      "description" : "How to extract trend based on Extreme Point Symmetric Mode Decomposition",
+      "url"      : "/2017/04/05/extreme-point-symmetric-mode-decomposition",
+      "category" : "",
+      "tags"     : "trend_extraction, EMD, ESMD",
+      "date"     : "2017-04-05 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "PCA ICA for 1D timeseries",
       "description" : "How to apply ICA, PCA for fault detection from single sensor?",
-      "url"      : "/2017/04/03/pca-ica-for-fault-detection-single-sensor",
+      "url"      : "/2017/04/03/pca-ica-1d-timeseries",
       "category" : "",
       "tags"     : "ICA, faultdetection, wavelet, PCA, sensors, preprocessing",
       "date"     : "2017-04-03 00:00:00 +0100"

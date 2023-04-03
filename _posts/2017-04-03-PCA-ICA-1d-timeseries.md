@@ -1,6 +1,6 @@
 ---
 layout: post
-title: PCA-ICA-for-fault-detection-1d-timeseries
+title: PCA ICA for 1D timeseries
 description: How to apply ICA, PCA for fault detection from single sensor?
 summary: How to apply ICA,PCA for fault detection from single sensor?
 author:
@@ -10,7 +10,7 @@ tags: [ICA, faultdetection, wavelet, PCA, sensors, preprocessing]
 ---
 
 ### Idea
-<p align="justify">Principal component analysis (PCA) isa method that transforms multiple data series into uncorrelated data series. Independent component analysis (ICA) is a method that separates multiple data series into independent data series. Both methods have been used in fault detection. However, both require signals from at least two separate sensors. To overcome this requirement and utilize the fault detection capability of ICA and PCA, we propose to use wavelet transform to pre-process the data collected from a single sensor and then use the coefficients of the wavelet transforms at different scales as input to ICA and PCA. </p>
+<p align="justify">Principal component analysis (PCA) isa method that transforms multiple data series into uncorrelated data series. Independent component analysis (ICA) is a method that separates multiple data series into independent data series. However, both require signals from at least two separate sensors. To overcome this requirement and utilize the fault detection capability of ICA and PCA, we propose to use wavelet transform to pre-process the data collected from a single sensor and then use the coefficients of the wavelet transforms at different scales as input to ICA and PCA. </p>
 
 
 <p align="justify">Independent components analysis (ICA) requires little prior knowledge about the components to be isolated; however, at least two sensors must be available for signal collection and the number of sensors must be at least equal to the number of sources to be separated and this method cannot be applied directly when there is only one sensor collecting signals.</p>
