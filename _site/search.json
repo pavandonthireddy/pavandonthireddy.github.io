@@ -2,6 +2,72 @@
   
     {
 
+      "title"    : "Sparse representation of signals",
+      "description" : "Sparse representation of signals",
+      "url"      : "/2017/04/11/sparse-representation",
+      "category" : "",
+      "tags"     : "representation, sparse_binary_programming",
+      "date"     : "2017-04-11 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Single Spectrum Analysis",
+      "description" : "SSA",
+      "url"      : "/2017/04/10/ssa",
+      "category" : "",
+      "tags"     : "trend_extraction, SSA",
+      "date"     : "2017-04-10 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Trend extraction with SSA and Sparse Binary Programming",
+      "description" : "Trend extraction with SSA and Sparse Binary Programming",
+      "url"      : "/2017/04/09/trend-extraction-ssa-sparse-binary-programming",
+      "category" : "",
+      "tags"     : "trend_extraction, SSA, sparse_binary_programming",
+      "date"     : "2017-04-09 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "ICA with CDWT",
+      "description" : "ICA with CDWT",
+      "url"      : "/2017/04/08/ica-with-cdwt",
+      "category" : "",
+      "tags"     : "BlindSourceSeperation, ICA, CDWT, STFT, DWT, wavelet, whitening, ICAissues",
+      "date"     : "2017-04-08 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Piecewise linear representation of time series",
+      "description" : "Piecewise linear representation of time series",
+      "url"      : "/2017/04/07/piecewise-linear-representation",
+      "category" : "",
+      "tags"     : "timeseries, representation, piecewiseLinearRepresentation, changepoint, slope",
+      "date"     : "2017-04-07 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "ICA",
+      "description" : "Blind source seperation based on ICA",
+      "url"      : "/2017/04/06/blind-source-seperation-ica",
+      "category" : "",
+      "tags"     : "BlindSourceSeperation, ICA",
+      "date"     : "2017-04-06 00:00:00 +0100"
+
+    } ,
+  
+    {
+
       "title"    : "Extreme Point Symmetric Mode Decomposition",
       "description" : "How to extract trend based on Extreme Point Symmetric Mode Decomposition",
       "url"      : "/2017/04/05/extreme-point-symmetric-mode-decomposition",
