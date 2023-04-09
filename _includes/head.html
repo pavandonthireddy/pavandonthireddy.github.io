@@ -82,9 +82,33 @@
          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
          <!-- displayMath: [ ['$$','$$'], ["\\[","\\]"] ], -->
          processEscapes: true,
-         processEnvironments: true
+         processEnvironments: true,
+         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
        },
-       "HTML-CSS": { availableFonts: ["TeX"] }
+       messageStyle: "none",
+       "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
+       TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js","AMScd.js"],
+        TagSide: "left",
+        Macros: {
+          field: ['\\mathbb{#1}', 1],
+          C: ['\\field{C}'],
+          E: ['\\field{E}'],
+          F: ['\\field{F}'],
+          N: ['\\field{N}'],
+          P: ['\\field{P}'],
+          Q: ['\\field{Q}'],
+          R: ['\\field{R}'],
+          Z: ['\\field{Z}'],
+          ha : ['\\hat{#1}',1],
+    
+          Re: ['\\mathop{\\mathrm{Re}}'],
+          Im: ['\\mathop{\\mathrm{Im}}'],
+          Res: ['\\mathop{\\mathrm{Res}}'],
+        }
+      }
+
      });
    </script>
    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>

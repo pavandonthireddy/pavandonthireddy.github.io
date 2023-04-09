@@ -4,13 +4,284 @@
  <title>Pavan Donthireddy</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2023-04-05T11:14:20+01:00</updated>
+ <updated>2023-04-09T00:13:39+01:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Pavan Donthireddy</name>
    <email>quarterpastix@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Optimal Finite Impulse Response (OFIR) Filter</title>
+   <link href="http://localhost:4000/2017/04/13/ofir-filter"/>
+   <updated>2017-04-13T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2017/04/13/ofir-filter</id>
+   <content type="html">&lt;p align=&quot;justify&quot;&gt;The Kalman filter (KF) is the
+most widely used real-time optimal estimator. However, the KF is a
+Bayesian estimator and its recursive algorithm has the infinite impulse
+response (IIR), owing to which the KF often suffers of insufficient robustness. Better robustness is inherent to finite memory filters and to filters with finite impulse response (FIR).&lt;/p&gt;
+
+&lt;p&gt;Unlike the KF, the FIR filter utilizes measurements on an interval of
+N most recent neighbouring points called horizon. Compared to the KF,
+FIR filters demonstrate many useful properties such as the bound input/
+bound output (BIBO) stability, higher robustness against temporary
+model uncertainties and round-off errors , and
+lower sensitivity to noise.&lt;/p&gt;
+
+&lt;h3 id=&quot;preliminaries&quot;&gt;Preliminaries&lt;/h3&gt;
+
+&lt;p&gt;Consider a general class of discrete-time linear systems represented in state-space with time-variant coefficients as&lt;/p&gt;
+
+\[x_{k}=A_{k} x_{k-1}+B_{k} w_{k} \tag{1}\]
+
+&lt;p&gt;\(y_{k}=C_{k} x_{k}+v_{k}\tag{2}\)
+in which $k$ is the discrete time index, $x_{k} \in \mathbb{R}^{n}$ is the state vector, $y_{k} \in \mathbb{R}^{p}$ is the measurement vector, and $A_{k} \in \mathbb{R}^{n \times n}, B_{k} \in \mathbb{R}^{n \times u}$, and $C_{k} \in \mathbb{R}^{p \times n}$ are time-variant matrices. Here, $w_{k} \in \mathbb{R}^{u}$ and $v_{k} \in \mathbb{R}^{p}$ are additive process and measurement noise sources with known covariances&lt;/p&gt;
+
+&lt;p&gt;$Q_k=\E ( w_k w_{k}^{T} ) $ and $R_{k}=\mathbb{E}( v_{k} v_{k}^{T})$, respectively. We suppose that $w_{k}$ and $v_{k}$ are zero mean, white, and mutually uncorrelated; that is, $\mathbb{E}( w_{k})=0$, $\mathbb{E}( v_{k})=0, \mathbb{E}(w_{k} w_{j}^{T})=0$ and $\mathbb{E}( v_{k} v_{j}^{T})=0$ for all $k$ and $j \neq k$, and $\mathbb{E}( w_{k} v_{j}^{T})=0$ for all $k$ and $j$.&lt;/p&gt;
+
+&lt;p&gt;The FIR filter requires simultaneously $N$ data points taken from the horizon $[l=k-N+1, k]$. Therefore, (1) and (2) need to be extended on $[l, k]$. That can be done if to use the recursively computed forward in-time solutions and write&lt;/p&gt;
+
+\[X_{k, l}=A_{k, l} x_{l}+B_{k, l} W_{k, l}\tag{3}\]
+
+\[Y_{k, l}=C_{k, l} x_{l}+H_{k, l} W_{k, l}+V_{k, l} \tag{5}\]
+
+&lt;p&gt;where the extended vectors are $X_{k, l}=\left[x_{k}^{T}, x_{k-1}^{T}, \ldots, x_{l}^{T}\right]^{T} \in \mathbb{R}^{N n \times 1}$, $Y_{k, l}=\left[y_{k}^{T}, y_{k-1}^{T}, \ldots, y_{l}^{T}\right]^{T} \in \mathbb{R}^{N p \times 1}, W_{k, l}=\left[w_{k}^{T}, w_{k-1}^{T}, \ldots, w_{l}^{T}\right]^{T} \in \mathbb{R}^{N u \times 1}$, and $V_{k, l}=\left[v_{k}^{T}, v_{k-1}^{T}, \ldots, v_{l}^{T}\right]^{T} \in \mathbb{R}^{N p \times 1}$. The extended $k$ - and $N$-variant matrices $A_{k, l} \in \mathbb{R}^{N n \times n}, B_{k, l} \in \mathbb{R}^{N n \times N u}, C_{k, l} \in \mathbb{R}^{N p \times n}$, and $H_{k, l} \in \mathbb{R}^{N p \times N u}$ can be represented as, respectively,&lt;/p&gt;
+
+&lt;p&gt;\(A_{k, l}=\left[\mathscr{A}_{k, l+1}^{T}, \mathscr{A}_{k-1, l+1}^{T}, \ldots, \mathscr{A}_{l+1, l+1}^{T}, I\right]^{T}\)
+\(B_{k, l}=\left[\begin{array}{ccccc}B_{k} &amp;amp; \mathscr{A}_{k, k} B_{k-1} &amp;amp; \cdots &amp;amp; \mathbf{A}_{k, l+2} B_{l+1} &amp;amp; \mathscr{A}_{k, l+1} B_{l} \\ 0 &amp;amp; B_{k-1} &amp;amp; \cdots &amp;amp; \mathscr{A}_{k-1, l+2} B_{l+1} &amp;amp; \mathscr{A}_{k-1, l+1} B_{l} \\ \vdots &amp;amp; \vdots &amp;amp; \cdots &amp;amp; \vdots &amp;amp; \vdots \\ 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; B_{l+1} &amp;amp; \mathscr{A}_{l+1, l+1} B_{l} \\ 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; B_{l}\end{array}\right]\)
+,&lt;/p&gt;
+
+\[C_{k, l}=\bar{C}_{k, l} A_{k, l}\]
+
+\[H_{k, l}=\bar{C}_{k, l} B_{k, l}\]
+
+&lt;p&gt;where&lt;/p&gt;
+
+\[\bar{C}_{k, l}=\operatorname{diag}\left(C_{k} C_{k-1} \cdots C_{l}\right)\]
+
+\[\mathbf{A}_{i, j}=\prod_{r=0}^{i-j} A_{i-r}=A_{i} A_{i-1} \ldots A_{j}\]
+
+&lt;p&gt;At the initial horizon point, (3) becomes $x_{l}=x_{l}+B_{l} w_{l}$ that is uniquely satisfied if $w_{l}$ is zero-valued, provided that $B_{l}$ is not zeroth. That means that the initial state must be known in advance or estimated optimally.&lt;/p&gt;
+
+&lt;p&gt;The FIR filtering estimate can be obtained at $k$ via (4) using the discrete convolution as&lt;/p&gt;
+
+\[\hat{x}_{k \mid k}=K_{k} Y_{k, l} \tag{5}\]
+
+&lt;p&gt;where $x_{t \vert r} $ means the estimate at $t$ via measurements from the past to and including at $r$ and $K_{k}$ is the FIR filter gain, which needs to be defined to obey some cost function. Note that the aforementioned inherent properties of FIR filtering are associated with the fact that measurements prior to $l$ are discarded in (5) and thus do not affect the estimate unlike in the KF which has IIR. It is also necessary to emphasize that when the system considered is time-invariant, the FIR estimate (5) will becomes $x_{k \mid k}=K_{N} Y_{k, l}$, which means that the filter gain $K_{N}$ is time-invariant and can be determined off-line once the horizon length $N$ is available. In this case, $K_{N}$ is not necessarily to be realized into iterative computation structure.&lt;/p&gt;
+
+&lt;p&gt;The optimal gain $K_{k}$ can be obtained for (5) in the minimum MSE sense by minimizing the trace of the MSE as&lt;/p&gt;
+
+\[\hat{K}_{k}=\underset{K_{k}}{\arg \min } E\left\{\operatorname{tr}\left(e_{k} e_{k}^{T}\right)\right\}\]
+
+&lt;p&gt;where $e_{k}=x_{k}-x_{k \mid k}$ is the estimation error. Provided $x_{k \mid k}$ via (5), the one-step prediction required by feedback control and associated with receding horizon filtering can be formed as $x_{k+1 \mid k}=A_{k+1} x_{k \mid k}$, similarly to the KF.&lt;/p&gt;
+
+&lt;h3 id=&quot;ofir-algorithm&quot;&gt;OFIR algorithm&lt;/h3&gt;
+
+&lt;p&gt;Given the model (1) and (2) with white and mutually uncorrelated noise processes $w_{k}$ and $v_{k}$ which have covariances $Q_{k}$ and $R_{k}$, respectively. The iterative form for OFIR estimate (10) with gain (16) is the following,&lt;/p&gt;
+
+\[\begin{aligned}
+\Xi_{i}= &amp;amp; A_{i} \Xi_{i-1} A_{i}^{T}+B_{i} Q_{i} B_{i}^{T}-A_{i} \Xi_{i-1} C_{i-1}^{T} \\
+&amp;amp; \times\left(R_{i-1}+C_{i-1} \Xi_{i-1} C_{i-1}^{T}\right)^{-1} C_{i-1} \Xi_{i-1} A_{i}^{T} \\
+G_{i}= &amp;amp; \Xi_{i} C_{i}^{T}\left(R_{i}+C_{i} \Xi_{i} C_{i}^{T}\right)^{-1}
+\end{aligned} \tag{6}\]
+
+\[\hat{x}_{i \mid i}=A_{i} \hat{x}_{i-1 \mid i-1}+G_{i}\left(y_{i}-C_{i} A_{i} \hat{x}_{i-1 \mid i-1}\right)\tag{7}\]
+
+&lt;p&gt;where $i$ ranges from $l+1$ to $k$ and the output is taken when $i=k$. The initial state $x_{l \vert l}$ is given and the initial prior error $\Xi_{i}$ is provided at l by&lt;/p&gt;
+
+&lt;p&gt;$\Xi_{l}=\Theta_{x, l}+B_{l} Q_{l} B_{l}^{T}$&lt;/p&gt;
+
+&lt;p&gt;where $\Theta_{x, l}$ is given.&lt;/p&gt;
+
+&lt;p&gt;As can be seen (7), is the Kalman-like recursion in which $A_{i} x_{i-1 \mid i-1}$ predicts the state from $i-1$ to $i$ and the bias correction gain (6) corrects the prediction for the residual. Although the KF and OFIR filter both minimize the MSE, $G_{i}$ is not the Kalman gain, because the KF has IIR. However, an increase in the horizon length $N$ reduces the estimation error and makes it such that the OFIR estimate converges to the KF estimate: the estimates become practically equal when $N&amp;gt;N_{\mathrm{opt}}$ . In this sense, the KF can be considered as a special case of a more general OFIR filter when $N=\infty$, provided the initial conditions. Another difference is that $N$ measurements are processed by the OFIR filter simultaneously at each time index $k$, while only one measurement is processed by the KF at $k$. That means that the computational complexity of OFIR filter $\mathcal{O}(N)$ is $N$ times larger than $\mathcal{O}(1)$ of the KF. On the other hand, the iterative algorithm reduces essentially the computational complexity $\mathcal{O}\left(N^{2}\right)$ of the batch OFIR form.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Hilbert Huang Transform</title>
+   <link href="http://localhost:4000/2017/04/12/hht"/>
+   <updated>2017-04-12T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2017/04/12/HHT</id>
+   <content type="html">&lt;p&gt;The EMD method is necessary to reduce any data from non-stationary and nonlinear processes into simple oscillatory function that will yield meaningful instantaneous frequency through the Hilbert transform. Contrary to almost all the previous decomposing methods, EMD is empirical, intuitive, direct, and adaptive, with the a posteriori defined basis derived from the data. The decomposition is designed to seek the different simple intrinsic modes of oscillations in any data based on the principle of scale separation. The data, depending on it complexity, may have many different coexisting modes of oscillation at the same time. Each of these oscillatory modes is represented by an Intrinsic Mode Function (IMF) with the following definitions:&lt;/p&gt;
+
+&lt;p&gt;(a) in the whole data set, the number of extrema and the number of zero-crossings must either equal or differ at most by one, and&lt;/p&gt;
+
+&lt;p&gt;(b) at any point, the mean value of the envelope defined by the local maxima and the envelope defined by the local minima is zero.&lt;/p&gt;
+
+&lt;p&gt;The IMF is a counter part to the simple harmonic function, but it is much more general: instead of constant amplitude and frequency, IMF can have both variable amplitude and frequency as functions of time. This definition is inspired by the simple example of constant plus sinusoidal function given above. The total number of the IMF components is limited to $\ln _{2} N$, where $\boldsymbol{N}$ is the total number of data points. It satisfies all the requirements for a meaningful instantaneous frequency through Hilbert transform.&lt;/p&gt;
+
+&lt;p&gt;Pursuant to the above definition for IMF, one can implement the needed decomposition of any function, known as sifting, as follows: Take the test data; identify all the local extrema; divide the extrema into two sets: the maxima and the minima. Then connect all the local maxima by a cubic spline line to form an upper envelope. Repeat the procedure for the local minima to form a lower envelope. The upper and lower envelopes should encompass all the data between them. Their mean is designated as $m_1$, and the difference between the data and $m_1$ is designated as, $h_1$, a proto-IMF:&lt;/p&gt;
+
+\[X(t)-m_{1}=h_{1}\]
+
+&lt;p&gt;Ideally, $h_1$ should satisfy the definition of an IMF by construction of $h_1$ described above, which should have made it symmetric and having all maxima positive and all minima negative. Yet, in changing the local zero from a rectangular to a curvilinear coordinate system some inflection points could become additional extrema. New extrema generated this way actually reveal the hidden modes missed in the initial treatment. The sifting process sometimes can recover signals representing low amplitude riding waves with repeated siftings.&lt;/p&gt;
+
+&lt;p&gt;The sifting process serves two purposes: to eliminate riding waves and to make the wave profiles more symmetric. While the first condition is absolute necessary for Hilbert transform to give a meaningful instantaneous frequency, the second condition is also necessary in case the neighboring wave amplitudes having too large a disparity. As a result, the sifting process has to be repeated many times to reduce the extracted signal an IMF. In the subsequent sifting process, $h_1$ is treated as the data for the next round of sifting; therefore,&lt;/p&gt;
+
+\[h_{1}-m_{11}=h_{11}\]
+
+&lt;p&gt;After repeated sifting, up to $\mathrm{k}$ times, $h_{1k}$ :&lt;/p&gt;
+
+\[h_{1(k-1)}-m_{1 k}=h_{1 k} \text {. }\]
+
+&lt;p&gt;If $\boldsymbol{h}_{\boldsymbol{1} \boldsymbol{k}}$ becomes an IMF, it is designated as 
+$C_1$ :&lt;/p&gt;
+
+\[C_{1}=h_{1 k}\]
+
+&lt;p&gt;the first IMF component from the data. Here one has a critical decision to make: when to stop. Too many rounds of sifting will reduce the IMF to FM page criterion; too few rounds of sifting will not have a valid IMF. In the past, different criteria have been used, including Cauchy type criterion (Huang et al. 19980), $\boldsymbol{S}$-number criterion (Huang et al. 2003), fixed-number criterion (Wu and Huang 2004), and etc.&lt;/p&gt;
+
+&lt;p&gt;With any stoppage criterion, the, $c_1$ should contain the finest scale or the shortest period component of the signal. one can, then, remove $c_1$ from the rest of the data by&lt;/p&gt;
+
+\[X(t)-C_{1}=r_{1}\]
+
+&lt;p&gt;Since the residue, $r_1$, contains all longer period variations in the data, it is treated as the new data and subjected to the same sifting process as described above. This procedure can be repeated to all the subsequent $r_j$ ‘s, and the result is&lt;/p&gt;
+
+\[\begin{gathered}
+r_{1}-C_{2}=r_{2}, \\
+\cdots \\
+r_{n-1}-C_{n}=r_{n}
+\end{gathered}\]
+
+&lt;p&gt;The sifting process should stop when the residue, $\boldsymbol{r}_{n}$, becomes a constant, a monotonic function, or a function contains only a single extrema, from which no more IMF can be extracted. By summing up Equations (16) and (17), we finally obtain&lt;/p&gt;
+
+\[X(t)=\sum_{j=1}^{n} C_{j}+r_{n}\]
+
+&lt;p&gt;Thus, sifting process produces a decomposition of the data into $\boldsymbol{n}$-intrinsic modes, and a residue, $\boldsymbol{r}_{\boldsymbol{n}}$. When apply the EMD method, a mean or zero reference is not required; EMD needs only the locations of the local extrema. The sifting process generates the zero reference for each component. Without the need of the zero reference, EMD avoids the troublesome step of removing the mean values for the large non-zero mean.&lt;/p&gt;
+
+&lt;p&gt;Two special notes here deserve our attention. First, the sifting process offered a way to circumvent the difficulty of define the local mean in a nonstationary time series, where no length scale exists for one to implement the traditional mean operation. The envelope mean employed here does not involve time scale; however, it is local. Second, the sifting process is a Reynolds-type decomposition: separating variations from the mean, except that the mean is a local instantaneous mean, so that the different modes are almost orthogonal to each other, except for the nonlinearity in the data.&lt;/p&gt;
+
+&lt;p&gt;Recent studies by Flandrin et al. (2004) and Wu and Huang (2004) established that the EMD is equivalent to a dyadic filter bank, and it is also equivalent to an adaptive wavelet. Being adaptive, we have avoided the shortcomings of using any a priori-defined wavelet basis, and also avoided the spurious harmonics that would have resulted. The components of the EMD are usually physically meaningful, for the characteristic scales are defined by the physical data.&lt;/p&gt;
+
+&lt;p&gt;Having established the decomposition, we can also identify a new use of the IMF components as filtering. Traditionally, filtering is carried out in frequency space only. But there is a great difficult in applying the frequency filtering when the data is either nonlinear or non-stationary or both, for both nonlinear and nonstationary data generate harmonics of all ranges. Therefore, any filtering will eliminate some of the harmonics, which will cause deformation of the data filtered. Using IMF, however, we can devise a time space filtering.&lt;/p&gt;
+
+&lt;p&gt;For example, a low pass filtered results of a signal having $\boldsymbol{n}$-IMF components can be simply expressed as&lt;/p&gt;
+
+\[X_{l k}(t)=\sum_{k}^{n} C_{j}+r_{n}\]
+
+&lt;p&gt;a high pass results can be expressed as&lt;/p&gt;
+
+\[X_{h k}(t)=\sum_{1}^{k} C_{j}\]
+
+&lt;p&gt;and a band pass result can be expressed as&lt;/p&gt;
+
+\[X_{b k}(t)=\sum_{b}^{k} C_{j}\]
+
+&lt;p&gt;The advantage of this time space filtering is that the results preserve the full nonlinearity and nonstationarity in the physical space.&lt;/p&gt;
+
+&lt;p&gt;Having obtained the Intrinsic Mode Function components, one can compute the instantaneous frequency for each IMF component as the derivative of the phase function. And one can also designate the instantaneous amplitude from the Hilbert transform to each IMF component. Finally, the original data can be expressed as the real part, RP, of the sum of the data in terms of time, frequency and energy as:&lt;/p&gt;
+
+\[X(t)=R P \sum_{j=1}^{n} a_{j}(t) e^{i \int \omega_{j}(t) d t}\]
+
+&lt;p&gt;Above equation gives both amplitude and frequency of each component as a function of time. The same data, if expanded in a Fourier representation, would have a constant amplitude and frequency for each component.&lt;/p&gt;
+
+&lt;p&gt;The contrast between EMD and Fourier decomposition is clear: The IMF represents a generalized Fourier expansion with a time varying function for amplitude and frequency. This frequency-time distribution of the amplitude is designated as the Hilbert Amplitude Spectrum, $\boldsymbol{H}(\boldsymbol{\omega}, \boldsymbol{t})$, or simply the Hilbert spectrum.&lt;/p&gt;
+
+&lt;p&gt;From the Hilbert spectrum, we can also define the marginal spectrum, $\boldsymbol{h}(\boldsymbol{\omega})$, as&lt;/p&gt;
+
+\[h(\omega)=\int_{0}^{T} H(\omega, t) d t\]
+
+&lt;p&gt;The marginal spectrum offers a measure of total amplitude (or energy) contribution from each frequency value. It represents the cumulated amplitude over the entire data span in a probabilistic sense.&lt;/p&gt;
+
+&lt;p&gt;The combination of the Empirical Mode Decomposition and the Hilbert Spectral Analysis is designated by NASA as the Hilbert-Huang Transform (HHT) for short. Recent studies by various investigators indicate that HHT is a super tool for time-frequency analysis of nonlinear and nonstationary data (Huang and Attoh-Okine, 2005, Huang and Shen, 2005). It is based on an adaptive basis, and the frequency is defined through the Hilbert transform. Consequently, there is no need for the spurious harmonics to represent nonlinear waveform deformations as in any of the a priori basis methods, and there is no uncertainty principle limitation on time or frequency resolution from the convolution pairs based also on a priori bases. A summary of the comparison between Fourier, Wavelet and HHT analyses is given in Table 1.&lt;/p&gt;
+
+&lt;p&gt;Table 1. Comparisons between Fourier, Wavelet and HilbertHuang Transform in Data analysis.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Transform&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Fourier&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Wavelet&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Hilbert&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Basis&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;a priori&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;a priori&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;adaptive&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Frequency&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;convolution: global, uncertainty&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;convolution: regional, uncertainty&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;differentiation: local, certainty&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Presentation&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;energy-frequency&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;energy-time-frequency&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;energy-time-frequency&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Nonlinear&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;no&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;no&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Non-stationary&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;no&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;yes&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Feature Extraction&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;no&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;discrete: no, continuous: yes&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Theoretical Base&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;theory complete&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;theory complete&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;empirical&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;After this basic development of the HHT method, there are some recent developments, which have either added insight to the results, enhanced the statistical significance of the results, and fixed some shortcomings in the HHT.&lt;/p&gt;
+
+&lt;h2 id=&quot;recent-developments&quot;&gt;Recent developments&lt;/h2&gt;
+
+&lt;h3 id=&quot;the-normalized-hilbert-transform-and-the-direct-quadrature&quot;&gt;The Normalized Hilbert Transform and the direct quadrature&lt;/h3&gt;
+
+&lt;p&gt;It is well known that, although the Hilbert transform exists for any function of $\boldsymbol{L}^{p}$ class, the phase function of the transformed function will not always yield physically meaningful instantaneous frequencies. The limitations have been summarized succinctly in two theorems.&lt;/p&gt;
+
+&lt;p&gt;First, in order to separate the contribution of the phase variation into the phase and amplitude parts, the function have to satisfy the limitation stipulated in the Bedrosian theorem (1963), which states that the Hilbert transform for the product of two functions, $\boldsymbol{f}(\boldsymbol{t})$ and $\boldsymbol{h}(\boldsymbol{t})$, can be written as&lt;/p&gt;
+
+\[H[f(t) h(t)]=f(t) H[h(t)]\]
+
+&lt;p&gt;only if the Fourier spectra for $\boldsymbol{f}(\boldsymbol{t})$ and $\boldsymbol{h}(\boldsymbol{t})$ are totally disjoint in frequency space, and the frequency content of the spectrum for $\boldsymbol{h}(\boldsymbol{t})$ is higher than that of $\boldsymbol{f}(\boldsymbol{t})$. This limitation is critical, for we need to have&lt;/p&gt;
+
+&lt;p&gt;$H[a(t) \cos \theta(t)]=a(t) H[\cos \theta(t)]$, (28) otherwise, one cannot use Equation (6) to define the phase function, for the amplitude variation would mix with the phase function. Bedrosian theorem requires that the amplitude is varying be so slowly that the frequency spectra of the envelope and the carrier waves are disjoint. This is possible only for trivial cases, for unless the amplitude is constant, any local deviation can be considered as a sum of delta-functions, which has a wide white spectrum. Therefore, the spectrum for varying amplitude would never be totally separate from that of the carrier. This limitation has made the application of the Hilbert transform even to IMFs problematic. To satisfy this requirement, Huang and Long (2003) have proposed the normalization of the IMFs in the following steps: Starting from an IMF, they first find all the maxima of the IMFs, defining the envelope by spline through all the maxima, and designating the envelope as $\boldsymbol{E}(\boldsymbol{t})$. Now, normalize the IMF by dividing the IMF by $\boldsymbol{E}(\boldsymbol{t})$. Thus, they have the normalized function having amplitude always equal to unity, and have circumvented the limitation of Bedrosian theorem.&lt;/p&gt;
+
+&lt;p&gt;Second, there is the new restriction given by the Nuttall theorem (1966), which stipulates that the Hilbert transform of cosine is not necessarily the sine with the same phase function for a cosine with an arbitrary phase function. Nuttall gave an energy based error bound, $\boldsymbol{\Delta E}$, defined as the difference between $y(t)$, the Hilbert transform of the data, and $\boldsymbol{Q}(\boldsymbol{t})$, the quadrature (with phase shift of exactly $90^{\circ}$ ) of the function as&lt;/p&gt;
+
+\[\Delta E=\int_{t=0}^{T}|y(t)-Q(t)|^{2} d t=\int_{-\infty}^{0} S_{q}(\omega) d \omega,\]
+
+&lt;p&gt;in which $\boldsymbol{S}_{\boldsymbol{q}}$ is Fourier spectrum of the quadrature function. Though the proof of this theorem is rigorous, the result is hardly useful, for it gives a constant error bound over the whole data range. With the normalized IMF, Huang and Long (2003) have proposed a variable error bound based on a simple argument, which goes as follows: compute the difference between squared amplitude of the normalized IMF and unity. If the Hilbert transform is exactly the quadrature, the difference between it and unity should be zero; otherwise, the Hilbert transform cannot be exactly the quadrature. Consequently, the error can be measured simply by the difference between the squared normalized IMF and unity, which is a function of time. Huang and Long (2003) and Huang et al. (2006) have conducted detailed comparisons and found the result quite satisfactory.&lt;/p&gt;
+
+&lt;p&gt;Even with the error indicator, we can only know that the Hilbert transform is not exactly the quadrature; we still do not have the correct answer. This prompts a drastic alternative, eschewing the Hilbert transform totally. An exact direct quadrature has been found (Huang et al., 2006), and it would resolve the difficulties associated with the instantaneous frequency computation.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-confidence-limit&quot;&gt;The Confidence Limit&lt;/h3&gt;
+
+&lt;p&gt;The confidence limit for the Fourier spectral analysis is based on the ergodic theory, where the temporal average is treated as the ensemble average. This approach is only valid if the processes are stationary. Huang et al. (2003) has proposed a different approach by utilizing the fact that there are infinite many ways to decompose one given function into difference components. Using EMD, one can still obtain many different sets of IMFs by changing the stoppage criteria. The confidence limit so derived does not depend on the ergodic theory From the confidence limit study, Huang et al. (2003) also found the optimal $\boldsymbol{S}$-number, when the differences reach a local minimum. Based on their experience from different data sets, they concluded that an $\boldsymbol{S}$-number in the range of 4 to 8 performed well. Logic also dictates that the $\boldsymbol{S}$-number should not be too high (which would drain all the physical meaning out of the IMF), nor too low (which would leave some riding waves remaining in the resulting IMFs).&lt;/p&gt;
+
+&lt;h3 id=&quot;the-statistical-significance-of-imfs&quot;&gt;The Statistical Significance of IMFs&lt;/h3&gt;
+
+&lt;p&gt;The EMD is a method to separate the data into different components by their scales. There is always the question: On what is the statistical significance of the IMFs based? In data containing noise, how can we separate the noise from information with confidence? This question was addressed by both Flandrin et al. (2004) and Wu and Huang (2004) through the study of signals consisting of noise only. Using white noise, Wu and Huang (2004) found the relationship between the mean period and RMS values of the IMFs. Furthermore, from the statistical properties of the scattering of the data, they found the bounds of the data distribution analytically. They concluded that when a data set is analyzed with EMD, if the mean period-RMS values exist outside the noise bounds, the components most likely contains signal, otherwise, a component could be resulted only from noise. Therefore, the components with their mean period-RMS values exceeding the noise bounds are statistically significant.&lt;/p&gt;
+
+&lt;h3 id=&quot;ensemble-emd-eemd&quot;&gt;Ensemble EMD (EEMD)&lt;/h3&gt;
+
+&lt;p&gt;One of the major problems existed in EMD is scale mixing: an IMF often contains local oscillations with dramatically different frequencies/scales (Huang et al 1999). Previous solution to that was introducing the intermittency check in which the frequency/scale range is subjectively determined. While such an approach works well in many cases, it also has side effect such as reducing adaptation of the EMD method.&lt;/p&gt;
+
+&lt;p&gt;Recently, a new Ensemble Empirical Mode Decomposition (EEMD) method is presented. This new approach consists of an ensemble of decompositions of data with added white noise, and then treats the resultant mean as the final true result. Finite, not infinitesimal, amplitude white noise is necessary to force the ensemble to exhaust all possible solutions in the sifting process, thus requiring the different scale signals to collate in the proper intrinsic mode functions (IMF) dictated by the dyadic filter banks. The effect of the added white noise is to present a uniform reference frame in the timefrequency and time-scale space; and, therefore, the added noise provides a natural reference for the signals of comparable scale to collate in one IMF. With this ensemble mean, the scale can be clearly and naturally separated without any a priori subjective criterion selection, such as in the intermittence test for the original EMD algorithm. This new approach fully utilizes the statistical characteristics of white noise to perturb the data in its true solution neighborhood, and then cancel itself out (via ensemble averaging) after serving its purpose; therefore, it represents a substantial improvement over the original EMD and qualifies for a truly noise-assisted data analysis (NADA) method.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Sparse representation of signals</title>
@@ -611,173 +882,6 @@ source.&lt;/p&gt;
 
 &lt;h3 id=&quot;reference-&quot;&gt;Reference :&lt;/h3&gt;
 &lt;p&gt;Feature separation using ICA for a one-dimensional time series and its application in fault detection - Ming J. Zuo, Jing Lin, Xianfeng Fan&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Latex cheatsheet</title>
-   <link href="http://localhost:4000/2017/03/21/latex-cheat-sheet"/>
-   <updated>2017-03-21T00:00:00+00:00</updated>
-   <id>http://localhost:4000/2017/03/21/latex-cheat-sheet</id>
-   <content type="html">&lt;h1 id=&quot;description&quot;&gt;Description&lt;/h1&gt;
-&lt;p&gt;Cheatsheet for LaTex, using Markdown for markup. I use this with &lt;a href=&quot;https://atom.io/&quot;&gt;atom.io&lt;/a&gt;
-and :package:&lt;code&gt;markdown-preview-plus&lt;/code&gt; to write math stuff. :package:&lt;code&gt;keyboard-localization&lt;/code&gt;
-is necessary when using an international layout (like [swiss] german).&lt;/p&gt;
-
-&lt;p&gt;$\mathrm{abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ23456}$&lt;/p&gt;
-
-&lt;p&gt;$\text{abcdeABCDEF ASDFASDF} \alpha, \beta, \gamma$&lt;/p&gt;
-
-\[E = mc^2\]
-
-&lt;p&gt;$\text{This is a text for math} \Bigg(\frac{a}{b} \Bigg)$&lt;/p&gt;
-
-&lt;p&gt;Further Reference and source: ftp://ftp.ams.org/pub/tex/doc/amsmath/short-math-guide.pdf&lt;/p&gt;
-
-&lt;h1 id=&quot;example-expressions--functions&quot;&gt;Example expressions / functions&lt;/h1&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;Input&lt;/th&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;Rendered&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code&gt;$a = b + c − d$&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;$a = b + c − d$&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code&gt;$\sqrt{?\frac{\pi}{2}}$&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;$\sqrt{\frac{\pi}{2}}$&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code&gt;$y = a x_1^2 + b x_2 + c$&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;$y = a x_1^2 + b x_2 + c$&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h1 id=&quot;special-characters--symbols&quot;&gt;Special characters / Symbols&lt;/h1&gt;
-&lt;p&gt;###Latin:
-#####No dot:&lt;br /&gt;
-&lt;code&gt;\imath&lt;/code&gt; $\rightarrow$ $\imath$,
-&lt;code&gt;\jmath&lt;/code&gt; $\rightarrow$ $\jmath$&lt;/p&gt;
-
-&lt;p&gt;#####Hat:&lt;br /&gt;
-&lt;code&gt;\hat{\imath}&lt;/code&gt;  $\rightarrow$ $\hat{\imath}$,
-&lt;code&gt;\hat{\jmath}&lt;/code&gt;  $\rightarrow$ $\hat{\jmath}$&lt;/p&gt;
-
-&lt;p&gt;###Greek Letters:
-#####Capital:
-LaTex      |   | LaTex    |   |
-———-:|–:|———:|–:|
-&lt;code&gt;\Gamma&lt;/code&gt;   | Γ | &lt;code&gt;\Delta&lt;/code&gt; | ∆ |
-&lt;code&gt;\Lambda&lt;/code&gt;  | Λ | &lt;code&gt;\Phi&lt;/code&gt;   | Φ |
-&lt;code&gt;\Pi&lt;/code&gt;      | Π | &lt;code&gt;\Psi&lt;/code&gt;   | Ψ |
-&lt;code&gt;\Sigma&lt;/code&gt;   | Σ | &lt;code&gt;\Theta&lt;/code&gt; | Θ |
-&lt;code&gt;\Upsilon&lt;/code&gt; | Υ | &lt;code&gt;\Xi&lt;/code&gt;    | Ξ |
-&lt;code&gt;\Omega&lt;/code&gt;   | Ω |          |   |&lt;/p&gt;
-
-&lt;p&gt;#####Lowercase:
-LaTex      |   | LaTex     |   |
-———-:|–:|———-:|–:|
-&lt;code&gt;\alpha&lt;/code&gt;   | α | &lt;code&gt;\nu&lt;/code&gt;     | ν |
-&lt;code&gt;\beta&lt;/code&gt;    | β | &lt;code&gt;\kappa&lt;/code&gt;  | κ |
-&lt;code&gt;\gamma&lt;/code&gt;   | γ | &lt;code&gt;\lambda&lt;/code&gt; | λ |
-&lt;code&gt;\delta&lt;/code&gt;   | δ |  &lt;code&gt;\mu&lt;/code&gt;    | µ |  &lt;br /&gt;
-&lt;code&gt;\epsilon&lt;/code&gt; | ϵ | &lt;code&gt;\zeta&lt;/code&gt;   | ζ |
-&lt;code&gt;\eta&lt;/code&gt;     | η | &lt;code&gt;\theta&lt;/code&gt;  | θ |
-&lt;code&gt;\iota&lt;/code&gt;    | ι | &lt;code&gt;\xi&lt;/code&gt;     | ξ |
-&lt;code&gt;\pi&lt;/code&gt;      | π | &lt;code&gt;\rho&lt;/code&gt;    | ρ |
-&lt;code&gt;\sigma&lt;/code&gt;   | σ | &lt;code&gt;\tau&lt;/code&gt;    | τ |
-&lt;code&gt;\upsilon&lt;/code&gt; | υ | &lt;code&gt;\phi&lt;/code&gt;    | φ |
-&lt;code&gt;\chi&lt;/code&gt;     | χ | &lt;code&gt;\psi&lt;/code&gt;    | ψ |
-&lt;code&gt;\omega&lt;/code&gt;   | ω |           |   |&lt;/p&gt;
-
-&lt;p&gt;#####Other:
-LaTex       |   | LaTex       |   |
-———–:|—|————:|–:|
-&lt;code&gt;\digamma&lt;/code&gt;  | ϝ | &lt;code&gt;varepsilon&lt;/code&gt;| ε       |
-&lt;code&gt;\varkappa&lt;/code&gt; | ϰ | &lt;code&gt;\varphi&lt;/code&gt;   | ϕ       |
-&lt;code&gt;\varpi&lt;/code&gt;    | ϖ | &lt;code&gt;\varrho&lt;/code&gt;   | ϱ       |
-&lt;code&gt;\varsigma&lt;/code&gt; | ς | &lt;code&gt;\vartheta&lt;/code&gt; | ϑ       |
-&lt;code&gt;\eth&lt;/code&gt;      | ð | &lt;code&gt;\hbar&lt;/code&gt;     | $\hbar$ |&lt;/p&gt;
-
-&lt;p&gt;###Other:
-####Other Symbols
-LaTex         |   | LaTex            |   |
-————-:|—|—————–:|–:|
-&lt;code&gt;\partial&lt;/code&gt;    | ∂ | &lt;code&gt;\infty&lt;/code&gt;         | ∞ |
-&lt;code&gt;\wedge&lt;/code&gt;      | ∧ | &lt;code&gt;\vee&lt;/code&gt;           | ∨ |
-&lt;code&gt;\neg&lt;/code&gt; &lt;code&gt;\not&lt;/code&gt; | ¬ |                  |   |
-&lt;code&gt;\bot&lt;/code&gt;        | ⊥ | &lt;code&gt;\top&lt;/code&gt;           | ⊤ |
-&lt;code&gt;\nabla&lt;/code&gt;      | ∇ | &lt;code&gt;\varnothing&lt;/code&gt;    | ∅ |
-&lt;code&gt;\angle&lt;/code&gt;      | ∠ | &lt;code&gt;\measuredangle&lt;/code&gt; | ∡ |
-&lt;code&gt;\surd&lt;/code&gt;       | √ | &lt;code&gt;\forall&lt;/code&gt;        | ∀ |
-&lt;code&gt;\exists&lt;/code&gt;     | ∃ | &lt;code&gt;\nexists&lt;/code&gt;       | ∄ |&lt;/p&gt;
-
-&lt;p&gt;####Relational Symbols
-LaTex             |   | LaTex              |          |
-—————–:|—|——————-:|———:|
-&lt;code&gt;\hookrightarrow&lt;/code&gt; | ↪      | &lt;code&gt;\Rightarrow&lt;/code&gt;     | ⇒         |
-&lt;code&gt;\rightarrow&lt;/code&gt;     | →      | &lt;code&gt;\Leftrightarrow&lt;/code&gt; | ⇔         |
-&lt;code&gt;\nrightarrow&lt;/code&gt;    | ↛      | &lt;code&gt;\mapsto&lt;/code&gt;         | $\mapsto$ |
-&lt;code&gt;\geq&lt;/code&gt;            | ≥      | &lt;code&gt;\leq&lt;/code&gt;            | ≤         |
-&lt;code&gt;\equiv&lt;/code&gt;          | ≡      | &lt;code&gt;\sim&lt;/code&gt;            | ∼         |
-&lt;code&gt;\gg&lt;/code&gt;             | ≫      | &lt;code&gt;\ll&lt;/code&gt;            | ≪          |
-&lt;code&gt;\subset&lt;/code&gt;          | ⊂     | &lt;code&gt;\subseteq&lt;/code&gt;     | ⊆           |
-&lt;code&gt;\in&lt;/code&gt;             | ∈      | &lt;code&gt;\notin&lt;/code&gt;         | ∉          |
-&lt;code&gt;\mid&lt;/code&gt;            | $\mid$ | &lt;code&gt;\propto&lt;/code&gt;        | ∝          |
-&lt;code&gt;\perp&lt;/code&gt;            | ⊥     | ` \parallel&lt;code&gt;     | ∥          |
-&lt;/code&gt;\vartriangle`     | $\vartriangle$&lt;/p&gt;
-
-&lt;p&gt;####Binary operators
-LaTex        |   | LaTex  |   |
-————:|—|——-:|–:|
-&lt;code&gt;\wedge&lt;/code&gt;     | ∧ | &lt;code&gt;\vee&lt;/code&gt; | ∨ |
-&lt;code&gt;\neg&lt;/code&gt;&lt;code&gt;\not&lt;/code&gt; | ¬ |        |   |&lt;/p&gt;
-
-&lt;p&gt;####Cumulative operators
-LaTex     |           | LaTex       |             |
-———:|———–|————:|————:|
-&lt;code&gt;\int&lt;/code&gt;    | ∫         | &lt;code&gt;\iint&lt;/code&gt;     | $\iint$     |
-&lt;code&gt;\iiint&lt;/code&gt;  | $\iiint$  | &lt;code&gt;\idotsint&lt;/code&gt; | $\idotsint$ |
-&lt;code&gt;\prod&lt;/code&gt;   | $\prod$   | &lt;code&gt;\sum&lt;/code&gt;      | $\sum$      |
-&lt;code&gt;\bigcup&lt;/code&gt; | $\bigcup$ | &lt;code&gt;\bigcap&lt;/code&gt;   | $\bigcap$   |&lt;/p&gt;
-
-&lt;p&gt;####Named operators
-$\arccos$,
-$\arcsin$,
-$\arctan$,
-$\arg$,
-$\cos$,
-$\cosh$,
-$\cot$,
-$\coth$,
-$\deg$,
-$\det$,
-$\dim$,
-$\exp$,
-$\gcd$,
-$\hom$,
-$\inf$,
-$\injlim$,
-$\lg$,
-$\lim$,
-$\liminf$,
-$\limsup$,
-$\ln$,
-$\log$,
-$\max$,
-$\min$,
-$\Pr$,
-$\projlim$,
-$\sec$,
-$\sin$,
-$\sinh$,
-$\sup$&lt;/p&gt;
 </content>
  </entry>
  
