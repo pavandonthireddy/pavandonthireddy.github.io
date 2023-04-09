@@ -2,6 +2,28 @@
   
     {
 
+      "title"    : "Optimal Finite Impulse Response (OFIR) Filter",
+      "description" : "Optimal Finite Impulse Response (OFIR) Filter",
+      "url"      : "/2017/04/13/ofir-filter",
+      "category" : "",
+      "tags"     : "filters, OFIR, FIR, IIR, kalman",
+      "date"     : "2017-04-13 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Hilbert Huang Transform",
+      "description" : "Hilbert Huang Transform",
+      "url"      : "/2017/04/12/hht",
+      "category" : "",
+      "tags"     : "trend_extraction, EMD, hilbert_spectral_analysis, HHT, EEMD",
+      "date"     : "2017-04-12 00:00:00 +0100"
+
+    } ,
+  
+    {
+
       "title"    : "Sparse representation of signals",
       "description" : "Sparse representation of signals",
       "url"      : "/2017/04/11/sparse-representation",
@@ -85,17 +107,6 @@
       "category" : "",
       "tags"     : "ICA, faultdetection, wavelet, PCA, sensors, preprocessing",
       "date"     : "2017-04-03 00:00:00 +0100"
-
-    } ,
-  
-    {
-
-      "title"    : "Latex cheatsheet",
-      "description" : "",
-      "url"      : "/2017/03/21/latex-cheat-sheet",
-      "category" : "junk",
-      "tags"     : "latex, css",
-      "date"     : "2017-03-21 00:00:00 +0000"
 
     } 
   
