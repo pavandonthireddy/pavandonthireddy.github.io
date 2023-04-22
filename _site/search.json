@@ -2,6 +2,908 @@
   
     {
 
+      "title"    : "Switching Kalman Filter and Its Variants",
+      "description" : "This article explains the switching Kalman filter and its variants in detail. It also includes Python implementations of the algorithms.",
+      "url"      : "/2023/04/22/switching-kalman-filter",
+      "category" : "",
+      "tags"     : "kalman",
+      "date"     : "2023-04-22 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Expectation Maximization for Change Point Detection in Time Series",
+      "description" : "This article describes the Expectation Maximization algorithm for finding change points in time series data. The algorithm is explained for both batch and online mode, and Python implementation is provided.",
+      "url"      : "/2023/04/21/em-turning-points",
+      "category" : "",
+      "tags"     : "Expectation_Maximization, turning_points, changepoint",
+      "date"     : "2023-04-21 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Expectation Maximization: A Powerful Tool for Trading Analysis",
+      "description" : "Explore how the Expectation Maximization algorithm can be applied to financial trading analysis in both batch and online mode. A comprehensive mathematical article with Python implementation.",
+      "url"      : "/2023/04/20/expectation-maximization",
+      "category" : "",
+      "tags"     : "Expectation_Maximization",
+      "date"     : "2023-04-20 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Recursive Algorithms for Trailing Stop Stochastic Approximation Approach",
+      "description" : "Recursive Algorithms for Trailing Stop Stochastic Approximation Approach",
+      "url"      : "/2023/04/19/recursive-algorithms-for-trailing-stop-stochastic-approximation-approach",
+      "category" : "",
+      "tags"     : "stochastic_optimization, trading, execution",
+      "date"     : "2023-04-19 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Stochastic Optimization and Its Potential Use Cases in Trading",
+      "description" : "This article discusses the fundamentals of stochastic optimization and explores its potential applications in trading.",
+      "url"      : "/2023/04/18/stochastic-optimization",
+      "category" : "",
+      "tags"     : "stochastic_optimization, trading, execution",
+      "date"     : "2023-04-18 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Understanding L Peak and L Trough in Time Series Data",
+      "description" : "This article discusses the concepts of L Peak and L Trough in time series analysis, and provides a Python implementation for calculating them",
+      "url"      : "/2023/04/17/peak-trough",
+      "category" : "",
+      "tags"     : "timeseries",
+      "date"     : "2023-04-17 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Time Series Segmentation using Turning Points and their Variants",
+      "description" : "A comprehensive guide on Time Series Segmentation using Turning Points and their Variants",
+      "url"      : "/2023/04/16/segmentation-turning-points",
+      "category" : "",
+      "tags"     : "turning_points,, representation",
+      "date"     : "2023-04-16 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Using HMM to Find Out the Trend of a Signal or Time Series in Real Time",
+      "description" : "This article discusses the use of Hidden Markov Models (HMMs) to identify the trend of a signal or time series in real time. It provides a detailed explanation of the theory behind HMMs and their implementation using Python code. ",
+      "url"      : "/2023/04/15/hmm-trend-detection",
+      "category" : "",
+      "tags"     : "trend_detection, HMM",
+      "date"     : "2023-04-15 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Matched Filters and their Variants",
+      "description" : "Understanding the working of Matched Filters and the different variants used for signal processing.",
+      "url"      : "/2023/04/14/matched-filters",
+      "category" : "",
+      "tags"     : "filters, signal_detection",
+      "date"     : "2023-04-14 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Non-Linear Detectors like SC Detector and its Variants",
+      "description" : "This article explains Non-Linear Detectors like SC Detector and its Variants with Statistics and Equations in LaTeX. It also includes Python Implementation for all Variants.",
+      "url"      : "/2023/04/13/nonlinear-detectors",
+      "category" : "",
+      "tags"     : "signal_detection",
+      "date"     : "2023-04-13 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "S Transform: A Denoising Method in Time-Frequency Domain",
+      "description" : "An article on S Transform and its usage as a denoising method in time-frequency domain.",
+      "url"      : "/2023/04/12/s-transform",
+      "category" : "",
+      "tags"     : "time_frequency_methods, S_Transform, signal_denoising",
+      "date"     : "2023-04-12 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Improved signal detection using efficient time–frequency de-noising technique and Pre-whitening filter",
+      "description" : "Improved signal detection using efficient time–frequency de-noising technique and Pre-whitening filter",
+      "url"      : "/2023/04/11/improved-signal-detection",
+      "category" : "",
+      "tags"     : "signal_detection, signal_denoising, time_frequency_methods, trend_estimation, trend_detection",
+      "date"     : "2023-04-11 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Adaptive Wavelet Shrinkage Method and Its Variants",
+      "description" : "This article discusses the concept of the Adaptive Wavelet Shrinkage Method (AWSM) and its variants used in signal processing.",
+      "url"      : "/2023/04/10/adaptive-wavelet-shrinkage",
+      "category" : "",
+      "tags"     : "wavelet, wavelet_thresholding, noise",
+      "date"     : "2023-04-10 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Wavelet Correlation Method and Its Variants",
+      "description" : "Exploring the principles and applications of wavelet correlation method and its various forms.",
+      "url"      : "/2023/04/09/wavelet-correlation-method",
+      "category" : "",
+      "tags"     : "wavelet, preprocessing, signal_denoising",
+      "date"     : "2023-04-09 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Function wavk_test from Funtimes Package in R for Goodness-of-Fit Analysis",
+      "description" : "This article provides a detailed explanation of the wavk_test function from the Funtimes package in R, which is used for goodness-of-fit analysis. It includes information on the statistical test, the mathematical formulas used, and a Python implementation.",
+      "url"      : "/2023/04/08/specifi-trend-test",
+      "category" : "",
+      "tags"     : "wavelet, trend_detection, signal_detection",
+      "date"     : "2023-04-08 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Trend Detection Statistical Tests in Real Time",
+      "description" : "A comprehensive guide to trend detection statistical tests for linear, monotonic, and specific form trends with Python implementation.",
+      "url"      : "/2023/04/07/trend-detection-statistical",
+      "category" : "",
+      "tags"     : "trend_detection",
+      "date"     : "2023-04-07 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Trend Detection Problem and Statistical Tests in Real Time",
+      "description" : "This article discusses the trend detection problem in statistical analysis and the various statistical tests used for detecting trends in real time. The article also covers the implementation of each test in Python with examples.",
+      "url"      : "/2023/04/06/trend-detection",
+      "category" : "",
+      "tags"     : "signal_detection, trend_detection",
+      "date"     : "2023-04-06 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "The Signal Detection Problem and its Variants",
+      "description" : "An in-depth examination of signal detection algorithms and their real-time variants, including Python implementations and examples.",
+      "url"      : "/2023/04/05/signal-detection",
+      "category" : "",
+      "tags"     : "signal_detection",
+      "date"     : "2023-04-05 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Various Noise Estimation Algorithms in Real-Time: A Detailed Overview with Financial Time Series",
+      "description" : "This article discusses various noise estimation algorithms used in real-time, with a focus on financial time series data. It includes their variants with equations in LaTeX, Python implementation of each variant, and an example.",
+      "url"      : "/2023/04/04/noise-estimation",
+      "category" : "",
+      "tags"     : "noise",
+      "date"     : "2023-04-04 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Weiner Filtering and its Variants",
+      "description" : "An overview of Weiner Filtering and its variations with Python implementation and examples.",
+      "url"      : "/2023/04/03/weiner-filtering",
+      "category" : "",
+      "tags"     : "noise,, filters",
+      "date"     : "2023-04-03 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Variable Digital Filtering and its Variants",
+      "description" : "This article explains the concept of Variable Digital Filtering and its variants using equations, Python implementation, and examples.",
+      "url"      : "/2023/04/02/variable-digital-filtering",
+      "category" : "",
+      "tags"     : "noise, ,, filters",
+      "date"     : "2023-04-02 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Pre-Whitening and Inverse Whitening Filters - A Detailed Scientific Article",
+      "description" : "This article discusses the concept of pre-whitening and inverse whitening filters, along with their variants and equations. The python implementation and an example for each variant are also provided.",
+      "url"      : "/2023/04/01/whitening-filter",
+      "category" : "",
+      "tags"     : "whitening, filters",
+      "date"     : "2023-04-01 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Linear Correlator and Its Variants",
+      "description" : "This article discusses the linear correlator and its variants used in signal processing and data analysis.",
+      "url"      : "/2023/03/31/linear-correlator",
+      "category" : "",
+      "tags"     : "filters, linear_correlator",
+      "date"     : "2023-03-31 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Time Frequency Bandpass Filter with Nonstationary Signal Decomposition Application",
+      "description" : "Time Frequency Bandpass Filter with Nonstationary Signal Decomposition Application",
+      "url"      : "/2023/03/30/time-frequency-bandpass-filter",
+      "category" : "",
+      "tags"     : "filters, time_frequency_methods",
+      "date"     : "2023-03-30 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Ridge Path Regrouping and its Variants",
+      "description" : "This article explains the concept of Ridge path regrouping along with its variants, including the Ridge path regrouping with fixed number of groups, Ridge path pruning, and Ridge path regrouping with custom constraints. The article also includes python implementations for each variant along with an example. ",
+      "url"      : "/2023/03/29/ridge-path-regrouping",
+      "category" : "",
+      "tags"     : "RPR, time_frequency_methods",
+      "date"     : "2023-03-29 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Intrinsic Chirp Component Decomposition and its Variants",
+      "description" : "This article discusses the theoretical concept of intrinsic chirp component decomposition along with its variants.",
+      "url"      : "/2023/03/28/intrinsic-chirp-component-decomposition",
+      "category" : "",
+      "tags"     : "time_frequency_methods, ICCD, signal_extraction",
+      "date"     : "2023-03-28 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Gabor Wigner Transform and Its Variants",
+      "description" : "This article introduces the Gabor Wigner transform and its variants along with the python implementation of each variant with code examples.",
+      "url"      : "/2023/03/27/gabor-wigner-transformation",
+      "category" : "",
+      "tags"     : "GWT,, time_frequency_methods, ,, representation",
+      "date"     : "2023-03-27 00:00:00 +0100"
+
+    } ,
+  
+    {
+
+      "title"    : "Tf Representations",
+      "description" : "",
+      "url"      : "/2023/03/26/tf-representations",
+      "category" : "",
+      "tags"     : "",
+      "date"     : "2023-03-26 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Ewt",
+      "description" : "",
+      "url"      : "/2023/03/25/ewt",
+      "category" : "",
+      "tags"     : "",
+      "date"     : "2023-03-25 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Time Filtering",
+      "description" : "",
+      "url"      : "/2023/03/24/time-filtering",
+      "category" : "",
+      "tags"     : "",
+      "date"     : "2023-03-24 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Frequency Filtering",
+      "description" : "",
+      "url"      : "/2023/03/23/frequency-filtering",
+      "category" : "",
+      "tags"     : "",
+      "date"     : "2023-03-23 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Variational Mode Decomposition Algorithm",
+      "description" : "An overview of the Variational Mode Decomposition algorithm and its implementation in Python",
+      "url"      : "/2023/03/22/vmd",
+      "category" : "",
+      "tags"     : "signal_extraction, VMD",
+      "date"     : "2023-03-22 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Iterative Filtering Decomposition Algorithm",
+      "description" : "An introduction to the Iterative Filtering Decomposition Algorithm, including equations in latex, Python implementation, and an example.",
+      "url"      : "/2023/03/21/ifd",
+      "category" : "",
+      "tags"     : "signal_extraction,, IFD",
+      "date"     : "2023-03-21 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Intrinsic Time Scale Decomposition",
+      "description" : "This article talks about Intrinsic Time Scale Decomposition algorithm, its equations in latex, python implementation and an example.",
+      "url"      : "/2023/03/20/itd",
+      "category" : "",
+      "tags"     : "signal_extraction, ITD",
+      "date"     : "2023-03-20 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Local Mean Decomposition",
+      "description" : "Local Mean Decomposition",
+      "url"      : "/2023/03/19/local-mean-decomposition",
+      "category" : "",
+      "tags"     : "signal_extraction",
+      "date"     : "2023-03-19 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Time frequency filters",
+      "description" : "Time frequency filters",
+      "url"      : "/2023/03/18/time-frequency-filters",
+      "category" : "",
+      "tags"     : "filters, wavelet, EMD, STFT",
+      "date"     : "2023-03-18 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "A Variable Gain Sliding Mode Tracking Differentiator for Derivative Estimation of Noisy Signals",
+      "description" : "A Variable Gain Sliding Mode Tracking Differentiator for Derivative Estimation of Noisy Signals",
+      "url"      : "/2023/03/17/variable-gain-sliding-td",
+      "category" : "",
+      "tags"     : "numerical_differentiaton, trend_estimation, tracking, differentiator",
+      "date"     : "2023-03-17 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Robust Exact Differentiator",
+      "description" : "Robust Exact Differentiator",
+      "url"      : "/2023/03/16/robust-exact-differentiator",
+      "category" : "",
+      "tags"     : "numerical_differentiaton, trend_estimation, differentiator, loss_function",
+      "date"     : "2023-03-16 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Tracking Differentiator",
+      "description" : "Tracking Differentiator",
+      "url"      : "/2023/03/15/tracking-differentiator",
+      "category" : "",
+      "tags"     : "numerical_differentiaton, trend_estimation, tracking, differentiator",
+      "date"     : "2023-03-15 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Sliding Mode Tracking Differentiator",
+      "description" : "Sliding Mode Tracking Differentiator",
+      "url"      : "/2023/03/14/sliding-mode-tracking-differentiator",
+      "category" : "",
+      "tags"     : "numerical_differentiaton, trend_estimation, tracking, differentiator",
+      "date"     : "2023-03-14 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Low rank plus sparse decomposition",
+      "description" : "Low rank plus sparse decomposition",
+      "url"      : "/2023/03/13/lsd",
+      "category" : "",
+      "tags"     : "signal_extraction, subspace_methods",
+      "date"     : "2023-03-13 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Signal Subspace low rank plus sparse decomposition",
+      "description" : "Signal Subspace low rank plus sparse decomposition",
+      "url"      : "/2023/03/12/signal-subspace-low-rank-plus-sparse-decomposition",
+      "category" : "",
+      "tags"     : "signal_enhancement, subspace_methods",
+      "date"     : "2023-03-12 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Signal Enhancement",
+      "description" : "Signal Enhancement",
+      "url"      : "/2023/03/11/signal-enhancement",
+      "category" : "",
+      "tags"     : "signal_enhancement",
+      "date"     : "2023-03-11 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "SSA and its variants",
+      "description" : "SSA and its variants",
+      "url"      : "/2023/03/10/ssa-and-its-variants",
+      "category" : "",
+      "tags"     : "SSA",
+      "date"     : "2023-03-10 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Applicability of prewhitening to eliminate the influence of serial correlation on the Mann Kendall test",
+      "description" : "Applicability of prewhitening to eliminate the influence of serial correlation on the Mann Kendall test",
+      "url"      : "/2023/03/09/prewhitening-mann-kandall-test",
+      "category" : "",
+      "tags"     : "whitening, trend_detection",
+      "date"     : "2023-03-09 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Adaptive Filtering",
+      "description" : "Adaptive Filtering",
+      "url"      : "/2023/03/08/adaptive-filtering",
+      "category" : "",
+      "tags"     : "adaptive_filtering, feedback",
+      "date"     : "2023-03-08 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "ON WHITENING FOR KRYLOV-PROPORTIONATE NORMALIZED LMS ALGORITHM",
+      "description" : "ON WHITENING FOR KRYLOV-PROPORTIONATE NORMALIZED LMS ALGORITHM",
+      "url"      : "/2023/03/07/whitening-for-kpnlms-algorithm",
+      "category" : "",
+      "tags"     : "adaptive_filtering, feedback, subspace_methods",
+      "date"     : "2023-03-07 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Weighted Sliding Empirical Mode Decomposition for Online Analysis of Biomedical Time Series",
+      "description" : "Weighted Sliding Empirical Mode Decomposition for Online Analysis of Biomedical Time Series",
+      "url"      : "/2023/03/06/weighted-sliding-emd",
+      "category" : "",
+      "tags"     : "EMD, online_algorithms",
+      "date"     : "2023-03-06 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Sampling and interpolation",
+      "description" : "Sampling and interpolation",
+      "url"      : "/2023/03/05/sampling-interpolation",
+      "category" : "",
+      "tags"     : "sampling, interpolation, numerical_methods",
+      "date"     : "2023-03-05 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Intrinsic Time scale Decomposition",
+      "description" : "Intrinsic Time scale Decomposition",
+      "url"      : "/2023/03/04/itd",
+      "category" : "",
+      "tags"     : "signal_denoising, ITD, multiresolution",
+      "date"     : "2023-03-04 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "The De-noising Algorithm Based on Intrinsic Time-scale Decomposition",
+      "description" : "The De-noising Algorithm Based on Intrinsic Time-scale Decomposition",
+      "url"      : "/2023/03/03/intrinsic-time-scale-decomposition",
+      "category" : "",
+      "tags"     : "signal_denoising, ITD, multiresolution",
+      "date"     : "2023-03-03 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Signal denoising",
+      "description" : "Signal denoising",
+      "url"      : "/2023/03/02/signal-denoising",
+      "category" : "",
+      "tags"     : "signal_denoising",
+      "date"     : "2023-03-02 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Zero Lag",
+      "description" : "Zero Lag",
+      "url"      : "/2023/03/01/zero-lag-error-correction",
+      "category" : "",
+      "tags"     : "filters, feedback",
+      "date"     : "2023-03-01 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Online algorithms for Blind Source Seperation",
+      "description" : "Online algorithms for Blind Source Seperation",
+      "url"      : "/2023/02/28/online-blind-source-seperation",
+      "category" : "",
+      "tags"     : "BlindSourceSeperation, online_algorithms",
+      "date"     : "2023-02-28 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Preprocessing for Blind Source Seperation",
+      "description" : "Preprocessing for Blind Source Seperation",
+      "url"      : "/2023/02/27/preprocessing-for-blind-source-seperation",
+      "category" : "",
+      "tags"     : "BlindSourceSeperation, preprocessing",
+      "date"     : "2023-02-27 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Whitening and Quasi Whitening",
+      "description" : "Whitening and Quasi Whitening",
+      "url"      : "/2023/02/26/whitening",
+      "category" : "",
+      "tags"     : "BlindSourceSeperation, whitening, preprocessing",
+      "date"     : "2023-02-26 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Blind source separation for noisy time series by combining non-Gaussianity and time correlation",
+      "description" : "Blind source separation for noisy time series by combining non-Gaussianity and time correlation",
+      "url"      : "/2023/02/25/blind-source-seperation-by-combining-non-gaussianity-and-time-correlation",
+      "category" : "",
+      "tags"     : "BlindSourceSeperation, whitening, preprocessing",
+      "date"     : "2023-02-25 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Boundary effects",
+      "description" : "Boundary effects",
+      "url"      : "/2023/02/24/boundary-effects",
+      "category" : "",
+      "tags"     : "boundary, signal_extraction, issues",
+      "date"     : "2023-02-24 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Afd",
+      "description" : "",
+      "url"      : "/2023/02/23/afd",
+      "category" : "",
+      "tags"     : "",
+      "date"     : "2023-02-23 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Dual Window Selective Median Switching Filter",
+      "description" : "",
+      "url"      : "/2023/02/22/dual-window-selective-median-switching-filter",
+      "category" : "",
+      "tags"     : "",
+      "date"     : "2023-02-22 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Noise",
+      "description" : "Noise",
+      "url"      : "/2023/02/21/noise",
+      "category" : "",
+      "tags"     : "noise",
+      "date"     : "2023-02-21 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Nearest Subspace Classification",
+      "description" : "Nearest Subspace Classification",
+      "url"      : "/2023/02/20/nearest-subspace-classification",
+      "category" : "",
+      "tags"     : "classification, timeseries, subspace_methods",
+      "date"     : "2023-02-20 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Nearest Subspace with Discriminative Regularization for Time Series Classification",
+      "description" : "Nearest Subspace with Discriminative Regularization for Time Series Classification",
+      "url"      : "/2023/02/19/nearest-subspace-with-discriminative-regularization-for-time-series-classification",
+      "category" : "",
+      "tags"     : "classification, timeseries, subspace_methods",
+      "date"     : "2023-02-19 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Tensor Singular value decomposition",
+      "description" : "Tensor Singular value decomposition",
+      "url"      : "/2023/02/18/tensor-svd",
+      "category" : "",
+      "tags"     : "SVD, linear_algebra",
+      "date"     : "2023-02-18 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Singular value decomposition",
+      "description" : "Singular value decomposition",
+      "url"      : "/2023/02/17/svd",
+      "category" : "",
+      "tags"     : "PCA, SVD, linear_algebra",
+      "date"     : "2023-02-17 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Principal Component Analysis",
+      "description" : "Principal Component Analysis",
+      "url"      : "/2023/02/16/pca",
+      "category" : "",
+      "tags"     : "PCA, SVD",
+      "date"     : "2023-02-16 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Collocation and  Galerkin Approximation",
+      "description" : "Collocation and  Galerkin Approximation",
+      "url"      : "/2023/02/15/collocation-galerkin",
+      "category" : "",
+      "tags"     : "numerical_methods",
+      "date"     : "2023-02-15 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Jump process for the trend estimation of time series",
+      "description" : "Jump process for the trend estimation of time series",
+      "url"      : "/2023/02/14/jump-process-for-trend-estimation-time-series",
+      "category" : "",
+      "tags"     : "trend_estimation, timeseries",
+      "date"     : "2023-02-14 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Trend Estimation",
+      "description" : "Trend Estimation",
+      "url"      : "/2023/02/13/trend-estimation",
+      "category" : "",
+      "tags"     : "trend_estimation",
+      "date"     : "2023-02-13 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Matrix Pencil",
+      "description" : "Matrix Pencil",
+      "url"      : "/2023/02/12/matrix-pencil",
+      "category" : "",
+      "tags"     : "linear_algebra",
+      "date"     : "2023-02-12 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Generalized Eigenvalue Decomposition",
+      "description" : "Generalized Eigenvalue Decomposition",
+      "url"      : "/2023/02/11/ged",
+      "category" : "",
+      "tags"     : "GED",
+      "date"     : "2023-02-11 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Signal Enhancement",
+      "description" : "Signal Enhancement",
+      "url"      : "/2023/02/10/signal-enhancement",
+      "category" : "",
+      "tags"     : "signal_enhancement",
+      "date"     : "2023-02-10 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "A Blind Source Separation Method Based on the Time Delayed Correlations and the Wavelet Transform",
+      "description" : "A Blind Source Separation Method Based on the Time Delayed Correlations and the Wavelet Transform",
+      "url"      : "/2023/02/09/blind-source-separation-method-based-on-the-time-delayed-correlations-and-the-wavelet-transform",
+      "category" : "",
+      "tags"     : "BlindSourceSeperation, wavelet",
+      "date"     : "2023-02-09 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Discrete Fourier Transformation",
+      "description" : "Discrete Fourier Transformation",
+      "url"      : "/2023/02/08/dft",
+      "category" : "",
+      "tags"     : "DFT",
+      "date"     : "2023-02-08 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Discrete Sine Transformation",
+      "description" : "Discrete Sine Transformation",
+      "url"      : "/2023/02/07/dst",
+      "category" : "",
+      "tags"     : "DST, DFT",
+      "date"     : "2023-02-07 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Numerical differentiation",
+      "description" : "Numerical differentiation",
+      "url"      : "/2023/02/06/numerical-differentiation",
+      "category" : "",
+      "tags"     : "numerical_differentiation",
+      "date"     : "2023-02-06 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "A new approach to numerical differentiation",
+      "description" : "A new approach to numerical differentiation",
+      "url"      : "/2023/02/05/a-new-approach-to-numerical-differentiation",
+      "category" : "",
+      "tags"     : "numerical_differentiation",
+      "date"     : "2023-02-05 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Time Series Classification",
+      "description" : "Time Series Classification",
+      "url"      : "/2023/02/04/time-series-classification",
+      "category" : "",
+      "tags"     : "classification, timeseries",
+      "date"     : "2023-02-04 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Classifying Time Series Using Local Descriptors with Hybrid Sampling",
+      "description" : "Classifying Time Series Using Local Descriptors with Hybrid Sampling",
+      "url"      : "/2023/02/03/classifying-time-series-using-local-descriptors-with-hybrid-sampling",
+      "category" : "",
+      "tags"     : "classification, timeseries, GMM, representation",
+      "date"     : "2023-02-03 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Iterative Kalman Filter",
+      "description" : "Iterative Kalman Filter",
+      "url"      : "/2023/02/02/ikf",
+      "category" : "",
+      "tags"     : "kalman, IKF",
+      "date"     : "2023-02-02 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "metrics",
+      "description" : "metrics",
+      "url"      : "/2023/02/01/metrics",
+      "category" : "",
+      "tags"     : "metrics",
+      "date"     : "2023-02-01 00:00:00 +0000"
+
+    } ,
+  
+    {
+
+      "title"    : "Adaptive Wavelet Packet thresholding with iterative kalman filter",
+      "description" : "Adaptive Wavelet Packet thresholding with iterative kalman filter",
+      "url"      : "/2023/01/31/adaptive-wavelet-packet-thresholding-with-iterative-kalman-filter-for-speech-enhancement",
+      "category" : "",
+      "tags"     : "wavelet, kalman, preprocessing, wavelet_thresholding",
+      "date"     : "2023-01-31 00:00:00 +0000"
+
+    } ,
+  
+    {
+
       "title"    : "Optimal Finite Impulse Response (OFIR) Filter",
       "description" : "Optimal Finite Impulse Response (OFIR) Filter",
       "url"      : "/2017/04/13/ofir-filter",
