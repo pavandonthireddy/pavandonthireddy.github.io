@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en" ><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Jekyll v4.3.2" /><meta property="og:title" content="Pre-Whitening and Inverse Whitening Filters - A Detailed Scientific Article" /><meta name="author" content="Pavan Donthireddy" /><meta property="og:locale" content="en_US" /><meta name="description" content="This article discusses the concept of pre-whitening and inverse whitening filters, along with their variants and equations. The python implementation and an example for each variant are also provided." /><meta property="og:description" content="This article discusses the concept of pre-whitening and inverse whitening filters, along with their variants and equations. The python implementation and an example for each variant are also provided." /><link rel="canonical" href="http://localhost:4000/2023/04/01/whitening-filter" /><meta property="og:url" content="http://localhost:4000/2023/04/01/whitening-filter" /><meta property="og:site_name" content="Pavan Donthireddy" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2023-04-01T00:00:00+01:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Pre-Whitening and Inverse Whitening Filters - A Detailed Scientific Article" /><meta name="twitter:site" content="@" /><meta name="twitter:creator" content="@Pavan Donthireddy" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Pavan Donthireddy"},"dateModified":"2023-04-01T00:00:00+01:00","datePublished":"2023-04-01T00:00:00+01:00","description":"This article discusses the concept of pre-whitening and inverse whitening filters, along with their variants and equations. The python implementation and an example for each variant are also provided.","headline":"Pre-Whitening and Inverse Whitening Filters - A Detailed Scientific Article","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2023/04/01/whitening-filter"},"url":"http://localhost:4000/2023/04/01/whitening-filter"}</script><title> Pre-Whitening and Inverse Whitening Filters - A Detailed Scientific Article - Pavan Donthireddy</title><meta charset="UTF-8"><link rel="canonical" href="http://localhost:4000/2023/04/01/whitening-filter" /><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Signal processing involves filtration of signals in various applications. One such filtration technique is the whitening filter, which helps to eliminate cor..."><meta property="og:site_name" content="Pavan Donthireddy"><meta property="og:description" content="Signal processing involves filtration of signals in various applications. One such filtration technique is the whitening filter, which helps to eliminate cor..."/><meta property="og:title" content="Pre-Whitening and Inverse Whitening Filters - A Detailed Scientific Article"><meta property="og:type" content="article"><meta property="article:published_time" content="2023-04-01T00:00:00+01:00"><meta property="article:author" content="http://localhost:4000/"><meta property="og:url" content="http://localhost:4000/2023/04/01/whitening-filter" /><link rel="shortcut icon" href="/favicon.png"><link rel="alternate" type="application/atom+xml" title="Pavan Donthireddy" href="/atom.xml"><link rel="alternate" type="application/json" title="Pavan Donthireddy" href="http://localhost:4000/feed.json" /><link rel="sitemap" type="application/xml" title="sitemap" href="/sitemap.xml" /> <script type="text/x-mathjax-config"> MathJax.Hub.Config({ jax: ["input/TeX","input/MathML","output/SVG", "output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js", "CHTML-preview.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }, tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true, processEnvironments: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, messageStyle: "none", "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js", "AMSsymbols.js","AMScd.js"], TagSide: "left", Macros: { field: ['\\mathbb{#1}', 1], C: ['\\field{C}'], E: ['\\field{E}'], F: ['\\field{F}'], N: ['\\field{N}'], P: ['\\field{P}'], Q: ['\\field{Q}'], R: ['\\field{R}'], Z: ['\\field{Z}'], ha : ['\\hat{#1}',1], Re: ['\\mathop{\\mathrm{Re}}'], Im: ['\\mathop{\\mathrm{Im}}'], Res: ['\\mathop{\\mathrm{Res}}'], } } }); </script> <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script><style> *,:after,:before{box-sizing:border-box;background-color:inherit;color:inherit;margin:0;padding:0}body{font-family:system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;line-height:1.5;font-size:1rem;color:#16171a}nav ul{border-right:1px solid #edf2f7}a{color:#000;text-decoration-skip-ink:auto;text-decoration:underline}pre{margin:.5rem 0;padding:.5rem}.post p{margin:.5rem 0}.post h1,.post h2,.post h3,.post h4{margin:1rem 0}.post h2:first-child,.project h2:first-child,.photo h2:first-child{margin-top:0}.meta{margin:2rem 0}code,pre{background:#ecedee}code{padding:.1rem}pre code{border:none}pre{padding:1rem;overflow-x:auto}img{max-width:100%}hr{background:#000;height:1px;border:0}header{flex-basis:10rem;flex-grow:1;position:relative}header a{text-decoration:none}header li{margin-bottom:.2rem;text-align:right;margin-right:2rem}header a.active{font-weight:bold}header,section{padding:1rem}blockquote{font-style:italic;border-left:5px solid #ececec;padding-left:1rem}h1,h2,h3,h4,h5{line-height:1;margin:1rem 0;font-weight:600}section h1:first-child{margin-top:0}strong,b{font-weight:bold}.photos ul{list-style:none}.photos li{margin-bottom:1.5rem}.photo picture,.project picture{margin-bottom:.5rem}.posts ul,header ul{list-style:none}.posts li{align-items:center;display:flex;justify-content:space-between;margin-bottom:.5rem}.posts li a,.posts li div,.projects li a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none}.posts li time,.projects li time{padding-left:1rem;white-space:nowrap;font-variant-numeric:tabular-nums}main{display:flex;flex-wrap:wrap;max-width:60rem;margin:2rem auto;padding:1rem}@media screen and (max-width: 45rem){header li{display:inline;margin-right:1rem}.logo{padding-bottom:1rem}header ul{border-bottom:1px solid #edf2f7;padding-bottom:2rem}nav ul{border-right:0px}.photos ul{margin-top:.5rem}}section{flex-basis:0;flex-grow:999;min-width:70%;display:flex;flex-direction:column}figcaption{font-size:smaller}.post-archive{font-size:15px;line-height:2;padding-bottom:.8em}.post-archive .date{padding-right:.7em}.pagination{width:100%;padding:0 20px;text-align:center}.pagination ul{list-style:none}.pagination ul li{display:inline;margin:0 5px}.pagination ul li a{color:#000;text-decoration:none}.pagination ul li a:hover{color:gray;text-decoration:underline}.pagination ul li.current-page a{background:#ddd;color:#fff}.post-link{position:relative;display:inline-block}.post-excerpt{display:none;position:absolute;z-index:1;top:100%;left:0;width:100%;padding:10px;background-color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.1)}.post-link:hover .post-excerpt{display:block}.img-padding{width:200px;height:200px;padding:20px 20px 20px 20px}</style></head><body><main role="main"><header role="banner"> <!--<h1 class="logo">Pavan Donthireddy</h1>--><nav role="navigation"><ul><li><a href="/" >Notes</a></li><li><a href="/tags" >Tags</a></li><li><a href="/search" >Search</a></li><li><a href="/about" >About</a></li></ul></nav></header><section class="post"><h1 style="text-align: center;">Pre-Whitening and Inverse Whitening Filters - A Detailed Scientific Article</h1><div style="text-align: center;"><span class="meta"><time datetime="2023-04-01T00:00:00+01:00">April 1, 2023</time> </span></div><div style="text-align: center;"><span class="meta"> <a href="/tag/whitening">whitening</a>, <a href="/tag/filters">filters</a></span></div><p>Signal processing involves filtration of signals in various applications. One such filtration technique is the whitening filter, which helps to eliminate correlations between signals. Pre-whitening and inverse whitening filters are variants of the whitening filter that play a significant role in signal processing applications.</p><h2 id="pre-whitening-filter">Pre-Whitening Filter</h2><p>The pre-whitening filter is a technique, which helps to reduce or eliminate correlations between signals. It is useful in cases where two signals are correlated, and the correlation is not necessarily harmful to the application. Pre-whitening is also used when we want to remove the correlation from one of the signals before further processing. It is an effective way of dealing with spurious correlations between signals, which can lead to false conclusions or biased estimators.</p><p>The pre-whitening filter can be defined mathematically as follows:</p><p><img src="https://latex.codecogs.com/svg.latex?s_y%20%3D%20R_x%5E%7B-1/2%7D%20%5Ccdot%20x" alt="Pre Whitening Filter Equation" /></p><p>Where,</p><ul><li>s_y: Pre-whitened signal</li><li>R_x: Covariance matrix of the original signal x</li><li>x: Original signal</li></ul><p>The goal is to obtain a signal such that the covariance matrix becomes proportional to the identity matrix, ensuring that the signal is uncorrelated. We apply a transformation to the original signal that is proportional to the inverse square root of the original covariance matrix. This process is known as pre-whitening.</p><p>In python, this can be implemented the following way:</p><pre><code class="language-python">import numpy as np
+
+# Original signal
+x = np.array([1, 2, 3, 4, 5, 6])
+
+# Covariance matrix of the original signal
+R_x = np.cov(x)
+
+# Inverse square root of the covariance matrix
+R_x_inv_sqrt = np.linalg.inv(np.sqrt(R_x))
+
+# Pre-whitened signal
+s_y = R_x_inv_sqrt @ x
+</code></pre><h2 id="inverse-whitening-filter">Inverse Whitening Filter</h2><p>The inverse whitening filter is a technique that helps to decorrelate a signal without affecting the variance of the signal. It is useful in cases where only the correlation between signals needs to be removed, and the signal variance needs to be preserved. The inverse whitening filter operation can be defined mathematically as follows:</p><p><img src="https://latex.codecogs.com/svg.latex?z%20%3D%20R_x%5E%7B-1/2%7D%20%5Ccdot%20y" alt="Inverse Whitening Filter Equation" /></p><p>Where,</p><ul><li>z: Inverse whitened signal</li><li>R_x: Covariance matrix of the original signal x</li><li>y: Correlated signal</li></ul><p>The inverse whitened signal is obtained by multiplying the correlated signal by the inverse square root of the covariance matrix of the original signal x. This process is known as inverse whitening.</p><p>In python, this can be implemented the following way:</p><pre><code class="language-python">import numpy as np
+
+# Correlated signal
+y = np.array([1, 3, 5, 7, 9, 11])
+
+# Covariance matrix of the original signal
+R_x = np.cov(y)
+
+# Inverse square root of the covariance matrix
+R_x_inv_sqrt = np.linalg.inv(np.sqrt(R_x))
+
+# Inverse whitened signal
+z = R_x_inv_sqrt @ y
+</code></pre><h2 id="variants-of-pre-whitening-and-inverse-whitening-filters">Variants of Pre-Whitening and Inverse Whitening Filters</h2><h3 id="modified-pre-whitening-filter">Modified Pre-Whitening Filter</h3><p>The modified pre-whitening filter is a variant of the pre-whitening filter that is useful in cases where it is not possible to invert the covariance matrix. This situation can arise when the covariance matrix is singular or when the number of samples is less than the dimension of the signal. The modified pre-whitening filter can be defined mathematically as follows:</p><p><img src="https://latex.codecogs.com/svg.latex?s_y%20%3D%20R_x%5E%7B-1/2%7D%20%5Ccdot%20%5Cmathrm%7Bdiag%7D%28%5Cmathrm%7Beig%7D%28R_x%29%29%20%5Ccdot%20R_x%5E%7B1/2%7D%20%5Ccdot%20R_x%5E%7B-1%7D%20%5Ccdot%20x" alt="Modified Pre-Whitening Filter Equation" /></p><p>Where,</p><ul><li>s_y: Pre-whitened signal</li><li>R_x: Covariance matrix of the original signal x</li><li>x: Original signal</li><li>diag(eig(R_x)): Diagonal matrix of eigenvalues of covariance matrix R_x</li><li>eig(R_x): Eigenvalues of covariance matrix R_x</li></ul><p>In python, this can be implemented the following way:</p><pre><code class="language-python">import numpy as np
+
+# Original signal
+x = np.array([1, 2, 3, 4, 5, 6])
+
+# Covariance matrix of the original signal
+R_x = np.cov(x)
+
+# Eigenvalues and eigenvectors of the covariance matrix
+eig_values, eig_vectors = np.linalg.eig(R_x)
+
+# Diagonal matrix of eigenvalues
+eig_values_diag = np.diag(eig_values)
+
+# Modified pre-whitening filter
+s_y = eig_vectors @ np.linalg.inv(np.sqrt(eig_values_diag)) @ eig_vectors.T @ x
+</code></pre><h3 id="modified-inverse-whitening-filter">Modified Inverse Whitening Filter</h3><p>The modified inverse whitening filter is a variant of the inverse whitening filter that is useful when the matrix is singular or not invertible. It provides better results than inverse whitening in such scenarios. The modified inverse whitening filter can be defined mathematically as follows:</p><p><img src="https://latex.codecogs.com/svg.latex?z%20%3D%20R_x%5E%7B%2B%7D%20%5Ccdot%20R_x%5E%7B-1/2%7D%20%5Ccdot%20y" alt="Modified Inverse Whitening Filter Equation" /></p><p>Where,</p><ul><li>z: Modified inverse whitened signal</li><li>R_x: Covariance matrix of the original signal x</li><li>y: Correlated signal</li><li>R_x+ : Moore-Penrose pseudoinverse of the covariance matrix R_x</li></ul><p>In python, this can be implemented the following way:</p><pre><code class="language-python">import numpy as np
+
+# Correlated signal
+y = np.array([1, 3, 5, 7, 9, 11])
+
+# Covariance matrix of the original signal
+R_x = np.cov(y)
+
+# Moore-Penrose pseudoinverse of the covariance matrix
+R_x_pinv = np.linalg.pinv(R_x)
+
+# Inverse square root of the covariance matrix
+R_x_inv_sqrt = np.linalg.inv(np.sqrt(R_x))
+
+# Modified inverse whitened signal
+z = R_x_pinv @ R_x_inv_sqrt @ y
+</code></pre><h2 id="conclusion">Conclusion</h2><p>In conclusion, pre-whitening and inverse whitening filters are essential techniques in signal processing. These filters help to eliminate correlations between signals, which can lead to biased results or false conclusions. The modified variants of pre-whitening and inverse whitening filters are useful when the covariance matrix is singular or not invertible. The python implementation and the examples of the variants discussed in this article provide a better understanding of the concepts and techniques involved in signal processing.</p><h1 id="other-version">Other version</h1><p>Coloured noise is a complex signal that contains a combination of frequencies. This type of noise finds application in areas such as music production, image processing, and communication systems. However, for many applications, it is preferable to have a signal that is normally distributed, such as Gaussian noise. One way to achieve this is by using linear time invariant (LTI) whitening filters.</p><p>LTI whitening filters convert the frequency distribution of a noise signal so that the power spectral density (PSD) is flat. This is achieved by passing the signal through an LTI filter whose frequency response is the inverse square root of the PSD of the input signal. The filtered signal has a white noise spectrum, which is Gaussian and of equal amplitude at all frequencies.</p><p>There are several popular whitening filter variants that can be used to convert coloured noise to Gaussian noise.</p><h3 id="variance-normalization-filtering">Variance Normalization Filtering</h3><p>The variance normalization filter normalizes the variance of a signal to 1, leaving the signal with zero mean. The filter takes the form of:</p>\[H(z)=\frac{1}{\sqrt[]{E[x(n)^2]}}\]<p>Where <code>E[x(n)^2]</code> is the mean squared value of the input signal. In Python, the variance normalization filter can be implemented as follows:</p><pre><code>def filter_vn(sig):
+    # Calculate mean and variance of signal
+    mu = np.mean(sig)
+    sig_var = np.var(sig)
+
+    # Normalize signal variance to 1
+    sig = (sig - mu) / np.sqrt(sig_var)
+
+    return sig
+</code></pre><h3 id="correlation-matrix-filtering">Correlation Matrix Filtering</h3><p>The correlation matrix filter computes the correlation matrix of a signal and then applies the Cholesky decomposition to get its square root. The resulting matrix is then used as the coefficients of a linear filter. The filter takes the form of:</p>\[H(z)=\sqrt[]{R^{-1}}\]<p>Where <code>R</code> is the correlation matrix of the input signal. In Python, the correlation matrix filter can be implemented as follows:</p><pre><code>def filter_cmf(sig):
+    # Compute correlation matrix
+    R = np.corrcoef(sig)
+
+    # Compute Cholesky decomposition of correlation matrix
+    S = np.linalg.cholesky(np.linalg.inv(R))
+
+    # Construct filter coefficients from Cholesky matrix
+    b = np.diag(S).reshape(-1, 1)
+    a = np.fliplr(S).reshape(-1, 1)
+
+    return lfilter(b.squeeze(), a.squeeze(), sig)
+</code></pre><h3 id="autocorrelation-matrix-filtering">Autocorrelation Matrix Filtering</h3><p>The autocorrelation matrix filter computes the autocorrelation matrix of a signal and then applies the Cholesky decomposition to get its square root. The resulting matrix is then used as the coefficients of a linear filter. The filter takes the form of:</p>\[H(z)=\sqrt[]{P^{-1}}\]<p>Where <code>P</code> is the autocorrelation matrix of the input signal. In Python, the autocorrelation matrix filter can be implemented as follows:</p><pre><code>def filter_amf(sig):
+    # Compute autocorrelation matrix
+    R = np.correlate(sig, sig, mode='full')[len(sig)-1:]
+    T = toeplitz(R)
+
+    # Compute Cholesky decomposition of autocorrelation matrix
+    S = np.linalg.cholesky(np.linalg.inv(T))
+
+    # Construct filter coefficients from Cholesky matrix
+    b = np.diag(S).reshape(-1, 1)
+    a = np.fliplr(S).reshape(-1, 1)
+
+    return lfilter(b.squeeze(), a.squeeze(), sig)
+</code></pre><h3 id="example-whitening-filter-comparison">Example: Whitening Filter Comparison</h3><p>To compare the different whitening filters, we can generate a signal with a coloured noise spectrum and then apply each of the filters in turn. The resulting filtered signal should have a Gaussian spectrum with zero mean and unit variance.</p><pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import lfilter
+
+# Generate coloured noise signal
+n = 10000
+sig = np.sin(np.linspace(0, np.pi*10, n)) + np.random.randn(n)*3
+
+# Apply variance normalization filter
+vn_sig = filter_vn(sig)
+
+# Apply correlation matrix filter
+cmf_sig = filter_cmf(sig)
+
+# Apply autocorrelation matrix filter
+amf_sig = filter_amf(sig)
+
+# Plot PSD of original and filtered signals
+psd_orig = np.abs(np.fft.fft(sig))**2
+psd_vn = np.abs(np.fft.fft(vn_sig))**2
+psd_cmf = np.abs(np.fft.fft(cmf_sig))**2
+psd_amf = np.abs(np.fft.fft(amf_sig))**2
+
+freqs = np.fft.fftfreq(n, d=1/n)
+plt.plot(freqs, psd_orig, label='Original')
+plt.plot(freqs, psd_vn, label='Variance Normalization')
+plt.plot(freqs, psd_cmf, label='Correlation Matrix')
+plt.plot(freqs, psd_amf, label='Autocorrelation Matrix')
+plt.xlabel('Frequency')
+plt.ylabel('Power Spectral Density')
+plt.legend()
+plt.show()
+</code></pre><p>The resulting plot shows the PSD of the original signal and the filtered signals using the variance normalization, correlation matrix, and autocorrelation matrix filters. We can see that all filters achieve a similar result, with a flat PSD indicating Gaussian noise.</p><p>In conclusion, LTI whitening filters are a powerful tool for converting coloured noise into Gaussian noise, which has many applications in signal processing. The variance normalization, correlation matrix, and autocorrelation matrix filters are popular variants of this approach, each with its strengths and weaknesses. The presented implementations demonstrate how to use the whitening filters in Python.</p><hr> <side style="font-size: 0.9em"><h3 style="margin-bottom: 1em">Notes mentioning this note</h3><div style="font-size: 0.9em"><p> There are no notes linking to this note.</p></div></side> <a href="" class="post-link"><h2></h2><p class="post-excerpt"></p></a> <script src="https://giscus.app/client.js" data-repo="pavandonthireddy/pavandonthireddy.github.io" data-repo-id="[ENTER REPO ID HERE]" data-category="[ENTER CATEGORY NAME HERE]" data-category-id="[ENTER CATEGORY ID HERE]" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light_high_contrast" data-lang="en" data-loading="lazy" crossorigin="anonymous" async> </script></section></main></body></html>

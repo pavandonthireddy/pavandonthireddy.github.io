@@ -70,7 +70,7 @@
   <link rel="sitemap" type="application/xml" title="sitemap" href="{{ site.baseurl }}/sitemap.xml" />
 
    <!-- for mathjax support -->
-   {% if page.usemathjax %}
+   {% if page.usemathjax or page.mathjax%}
    <script type="text/x-mathjax-config">
      MathJax.Hub.Config({
        jax: ["input/TeX","input/MathML","output/SVG", "output/CommonHTML"],

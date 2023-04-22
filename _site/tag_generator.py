@@ -25,6 +25,7 @@ for filename in filenames:
         if crawl:
             current_tags = line.strip().split()
             current_tags_cleaned = [''.join(x for x in s if x.isalpha()) for s in current_tags]
+            print(current_tags)
             if current_tags[0] == 'tags:':
                 total_tags.extend(current_tags_cleaned[1:])
                 crawl = False

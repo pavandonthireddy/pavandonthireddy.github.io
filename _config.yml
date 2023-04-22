@@ -32,7 +32,7 @@ sass:
   style:            :compressed
 
 
-paginate: 1000
+paginate: 25
 paginate_path: "/notes/:num/"
 
 plugins:
