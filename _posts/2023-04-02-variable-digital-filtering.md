@@ -6,7 +6,7 @@ summary: This article covers the basics of Variable Digital Filtering, its varia
 author: Pavan Donthireddy
 usemathjax: true
 original: new
-tags: noise , filters 
+tags: [noise , filters] 
 
 ---
 

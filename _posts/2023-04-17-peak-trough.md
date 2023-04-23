@@ -6,7 +6,7 @@ summary: "This article explains L Peak and L Trough in the context of time serie
 author: Pavan Donthireddy
 usemathjax: true
 original: new
-tags:  timeseries 
+tags:  [timeseries] 
 ---
 L Peak and L Trough are two concepts that are commonly used in time series analysis. L Peak is the highest value of a time series, while L Trough is the lowest value of a time series. Both L Peak and L Trough play an important role in understanding the trends and patterns of a time series, and can help in making future predictions.
 

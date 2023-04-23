@@ -6,7 +6,7 @@ summary: This article presents an overview of time series segmentation using tur
 author: Pavan Donthireddy
 usemathjax: true
 original: new
-tags: turning_points, representation 
+tags: [turning_points, representation ]
 ---
 
 Time series segmentation is a crucial task in time series analysis. It involves dividing a time series into homogeneous segments, thereby facilitating further analysis and modeling. Turning points, which are defined as local minima or maxima, are widely used as anchors for segmenting time series. This article provides an overview of various methods for identifying turning points and their variants, along with their applications in practical time series analysis. Implementations in Python are provided for all variants.
