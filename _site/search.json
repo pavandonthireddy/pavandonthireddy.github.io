@@ -640,11 +640,11 @@
   
     {
 
-      "title"    : "Afd",
-      "description" : "",
+      "title"    : "Adaptive fourier Decomposition",
+      "description" : "Adaptive fourier Decomposition",
       "url"      : "/2023/02/23/afd",
       "category" : "",
-      "tags"     : "",
+      "tags"     : "AFD, trend_estimation, signal_extraction",
       "date"     : "2023-02-23 00:00:00 +0000"
 
     } ,
@@ -882,8 +882,8 @@
   
     {
 
-      "title"    : "metrics",
-      "description" : "metrics",
+      "title"    : "Metrics",
+      "description" : "Metrics",
       "url"      : "/2023/02/01/metrics",
       "category" : "",
       "tags"     : "metrics",
