@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: Time Frequency Representations and Its Variants
@@ -7,7 +6,7 @@ summary: The article provides an introduction to time frequency analysis, discus
 author: Pavan Donthireddy
 mathjax: true
 original: new
-tags: time_frequency_methods , representation, STFT , EMD 
+tags: [time_frequency_methods , representation, STFT , EMD] 
 
 ---
 
