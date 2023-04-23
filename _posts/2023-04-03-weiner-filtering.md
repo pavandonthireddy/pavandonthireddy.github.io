@@ -6,7 +6,7 @@ summary: "This article explains the concept of Weiner Filtering and its variants
 author: Pavan Donthireddy
 usemathjax: true
 original: new
-tags: noise, filters 
+tags: [noise, filters] 
 ---
 
 # Introduction
