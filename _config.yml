@@ -35,6 +35,15 @@ sass:
 paginate: 25
 paginate_path: "/notes/:num/"
 
+
+markdown: kramdown
+
+kramdown:
+  math_engine: katex
+  highlighter: rouge
+  input: GFM
+
+
 google_analytics: G-SJ3XTN2D50
 plugins:
   - jekyll-paginate
@@ -67,3 +76,5 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+
+  

@@ -6,7 +6,7 @@ summary: "Learn about Gabor Wigner transform and its variants with python implem
 author: Pavan Donthireddy
 usemathjax: true
 original: new
-tags: GWT, time_frequency_methods , representation 
+tags: [GWT, time_frequency_methods, representation] 
 ---
 
 # Introduction

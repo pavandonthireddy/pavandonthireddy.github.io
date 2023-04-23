@@ -72,7 +72,7 @@
       "description" : "A comprehensive guide on Time Series Segmentation using Turning Points and their Variants",
       "url"      : "/2023/04/16/segmentation-turning-points",
       "category" : "",
-      "tags"     : "turning_points,, representation",
+      "tags"     : "turning_points, representation",
       "date"     : "2023-04-16 00:00:00 +0100"
 
     } ,
@@ -215,7 +215,7 @@
       "description" : "An overview of Weiner Filtering and its variations with Python implementation and examples.",
       "url"      : "/2023/04/03/weiner-filtering",
       "category" : "",
-      "tags"     : "noise,, filters",
+      "tags"     : "noise, filters",
       "date"     : "2023-04-03 00:00:00 +0100"
 
     } ,
@@ -226,7 +226,7 @@
       "description" : "This article explains the concept of Variable Digital Filtering and its variants using equations, Python implementation, and examples.",
       "url"      : "/2023/04/02/variable-digital-filtering",
       "category" : "",
-      "tags"     : "noise, ,, filters",
+      "tags"     : "noise, filters",
       "date"     : "2023-04-02 00:00:00 +0100"
 
     } ,
@@ -292,29 +292,29 @@
       "description" : "This article introduces the Gabor Wigner transform and its variants along with the python implementation of each variant with code examples.",
       "url"      : "/2023/03/27/gabor-wigner-transformation",
       "category" : "",
-      "tags"     : "GWT,, time_frequency_methods, ,, representation",
+      "tags"     : "GWT, time_frequency_methods, representation",
       "date"     : "2023-03-27 00:00:00 +0100"
 
     } ,
   
     {
 
-      "title"    : "Tf Representations",
-      "description" : "",
+      "title"    : "Time Frequency Representations and Its Variants",
+      "description" : "This article explains the concept of time frequency analysis, along with its variants and their implementation in Python.",
       "url"      : "/2023/03/26/tf-representations",
       "category" : "",
-      "tags"     : "",
+      "tags"     : "time_frequency_methods, representation, STFT, EMD",
       "date"     : "2023-03-26 00:00:00 +0000"
 
     } ,
   
     {
 
-      "title"    : "Ewt",
-      "description" : "",
+      "title"    : "Empirical Wavelet Transform and its Variants",
+      "description" : "An overview of empirical wavelet transform and its variants along with their mathematical formulations and Python implementations.",
       "url"      : "/2023/03/25/ewt",
       "category" : "",
-      "tags"     : "",
+      "tags"     : "wavelet, signal_extraction, time_frequency_methods",
       "date"     : "2023-03-25 00:00:00 +0000"
 
     } ,

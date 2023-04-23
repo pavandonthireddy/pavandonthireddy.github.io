@@ -70,50 +70,27 @@
   <link rel="sitemap" type="application/xml" title="sitemap" href="{{ site.baseurl }}/sitemap.xml" />
 
    <!-- for mathjax support -->
-   {% if page.usemathjax or page.mathjax%}
-   <script type="text/x-mathjax-config">
-     MathJax.Hub.Config({
-       jax: ["input/TeX","input/MathML","output/SVG", "output/CommonHTML"],
-   extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js", "CHTML-preview.js"],
-   TeX: {
-     extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
-   },
-     tex2jax: {
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         <!-- displayMath: [ ['$$','$$'], ["\\[","\\]"] ], -->
-         processEscapes: true,
-         processEnvironments: true,
-         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-       },
-       messageStyle: "none",
-       "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
-       TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        extensions: ["AMSmath.js", "AMSsymbols.js","AMScd.js"],
-        TagSide: "left",
-        Macros: {
-          field: ['\\mathbb{#1}', 1],
-          C: ['\\field{C}'],
-          E: ['\\field{E}'],
-          F: ['\\field{F}'],
-          N: ['\\field{N}'],
-          P: ['\\field{P}'],
-          Q: ['\\field{Q}'],
-          R: ['\\field{R}'],
-          Z: ['\\field{Z}'],
-          ha : ['\\hat{#1}',1],
-    
-          Re: ['\\mathop{\\mathrm{Re}}'],
-          Im: ['\\mathop{\\mathrm{Im}}'],
-          Res: ['\\mathop{\\mathrm{Res}}'],
-        }
-      }
 
-     });
-   </script>
-   <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
-   
-   {% endif %}
+
+     <!--KaTeX-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+              // ...options...
+          });
+      });
+  </script>
+
+
+{% if page.usemathjax or page.mathjax or page.katex %}
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+{% endif %}
+
+
 
   <style>
     {% capture include_to_scssify %}
