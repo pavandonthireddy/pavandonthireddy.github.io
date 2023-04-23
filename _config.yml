@@ -39,7 +39,7 @@ paginate_path: "/notes/:num/"
 markdown: kramdown
 
 kramdown:
-  math_engine: katex
+  # math_engine: katex
   highlighter: rouge
   input: GFM
 
